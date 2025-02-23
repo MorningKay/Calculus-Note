@@ -1,0 +1,26 @@
+*.aux
+*.log
+*.out
+*.toc
+*.synctex.gz
+*.fls
+*.fdb_latexmk
+*.bbl
+*.blg
+*.lof
+*.lot
+*.nav
+*.snm
+*.vrb
+*.thm
+*.brf
+*.run.xml
+
+*.swp
+*.swo
+
+.DS_Store
+
+Thumbs.db
+
+# *.pdf
