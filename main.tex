@@ -1,0 +1,73 @@
+\documentclass[lang=cn,10pt,scheme=chinese,toc=twocol]{elegantbook}
+\usepackage{float}
+\usepackage{amsmath}
+\usepackage{tikz}
+\usetikzlibrary{quotes,angles}
+\usepackage{wrapfig}
+\numberwithin{figure}{section}
+\numberwithin{table}{section}
+\newcommand{\arccot}{\mathrm{arccot}\,}
+\newcommand{\deriv}{\mathrm{d}}
+\newcommand{\pll}{\hspace{0.7ex}
+\begin{tikzpicture}[line width = 0.08 ex, line cap = round]
+\draw (0, 0) -- (0.55ex, 1.5ex); % 倾斜角度为70度
+\draw[xshift=0.6ex] (0, 0) -- (0.55ex, 1.5ex);
+\end{tikzpicture}\hspace{0.6ex}
+} % 平行
+\usepackage{newtxmath}
+\usepackage{bm}
+
+\title{高等数学章节总结}
+% \subtitle{Elegant\LaTeX{} 经典之作}
+
+% \author{Ethan Deng \& Liam Huang}
+\institute{数学协会}
+% \date{April 9, 2022}
+% \version{4.3}
+% \bioinfo{自定义}{信息}
+
+\extrainfo{世界上最远的距离，是我说$Q^\text{T}AQ$，你却以为我在卖萌}
+
+% 修改标题页的橙色带
+\definecolor{customcolor}{RGB}{32,178,170}
+\colorlet{coverlinecolor}{customcolor}
+
+\setcounter{tocdepth}{3}
+
+\logo{logo.jpeg}
+\cover{cover.png}
+
+% 本文档命令
+\usepackage{array}
+\newcommand{\ccr}[1]{\makecell{{\color{#1}\rule{1cm}{1cm}}}}
+
+\begin{document}
+    \maketitle
+    \frontmatter
+    
+    \tableofcontents
+    
+    \mainmatter
+    
+    \chapter*{关于数学协会与本书内容}
+    天津工业大学数学协会成立于1998年6月1日，登记注册的社员近150人，作为最为传统的协会之一，我们立足于基础数学学科，面向全校的数学爱好者，秉持相互交流学习数学的初心来提高同学们学习数学的兴趣和能力。同时，我们通过举办讲座、在线答疑、在线解题等活动增进并创造良好的学习氛围，定期在协会群和教室里交流思想，发散思维，由此激发同学们的学习兴趣。
+
+    本书内容基于同济第八版《高等数学》进行提炼总结，适用于同学们在学习完相应内容后复习使用，作为预习的内容相对简略且不易懂，建议优先观看对应的课程或者教材。
+    带星号(*)部分为竞赛进阶内容，扩充书上及相关习题册部分未讲解的内容，仅应对期末考试的同学可以不要求掌握。
+
+    本书采用ElegantBook模板编写，详细LaTeX代码详见GitHub仓库：https://github.com/MorningKay/Calculus-Note
+
+    \include{Ch0.tex}
+    \include{Ch1.tex}
+    \include{Ch2.tex}
+    \include{Ch3.tex}
+    \include{Ch4.tex}
+    \include{Ch5.tex}
+    \include{Ch6.tex}
+    \include{Ch7.tex}
+    \include{Ch8.tex}
+    \include{Ch9.tex}
+    \include{Ch10.tex}
+    \include{Ch11.tex}
+    \include{Ch12.tex}
+\end{document}

@@ -1,0 +1,422 @@
+\chapter{函数与极限}
+
+\begin{introduction}
+    \item 函数的极限 \ref{def:function_limit}
+    \item 极限存在定理 \ref{thm:squeeze_theorem_function}
+    \item 无穷小的比较
+    \item 介值定理 \ref{thm:the_intermediate_value_theorem}
+    \item 数列的极限 \ref{def:sequence_limit}
+    \item 单调数列定理 \ref{thm:monotonic_sequence_theorem}
+\end{introduction}
+
+\section{函数}
+\subsection{函数的概念与性质}
+设有两个变量$x$和$y$，如果变量$x$在其变化范围$D$内任取一个确定的数值时，变量$y$按照一定的规则$f$总有唯一确定的数值和它对应，则称变量$y$是变量$x$的函数，记为$y=f(x)$，$x$称为自变量，$y$称为因变量，$D$称为函数的定义域，$f$表示由$x$确定$y$的对应规则。
+
+\begin{property} 函数的主要性质 \label{property:function}
+\begin{enumerate}
+\item 有界性 \quad 设函数$f(x)$在集合$D$上有定义，如果存在一个正常数$M$，使得对于$x$在$D$上的任意取值，均有$\left| f(x) \right|< M$，则称函数$f(x)$在$D$上有界，否则称函数$f(x)$在$D$上无界。
+
+\item 单调性 \quad 设函数$f(x)$在某区间$D$上有定义，如果对于$D$上任意两点$x_1,x_2$，且$x_1< x_2$，均有$f(x_1)< f(x_2)$（或$f(x_1)> f(x_2)$），则称函数$f(x)$在$D$上单调增加（或单调减少），单调增加或单调减少函数统称为单调函数。
+
+\item 奇偶性 \quad 设函数$f(x)$在关于原点对称的区间$D$上有定义，如果对$D$上任意点$x$，均有$f(-x)=f(x)$（或$f(-x)=-f(x)$），则称函数$f(x)$为偶函数（或奇函数）。
+
+\item 周期性 \quad 设函数$f(x)$在集合$D$上有定义，如果存在正常数$T$，使得对于$D$上任意$x$，均有$f(x+T)=f(x)$，则称$f(x)$为周期函数，使上式成立的最小正数为周期函数的周期。
+\end{enumerate}
+\end{property}
+
+\subsection{函数的极限}
+\begin{definition}[函数的极限] \label{def:function_limit}
+    设函数$f(x)$在点$x_0$的邻域内（点$x_0$可除外）有定义，$A$为一个常数，若对任意给定的$\varepsilon > 0$，都存在一个正数$\delta$，使得满足$0<\left|x-x_0\right|<\delta$的一切$x$所对应的$f(x)$都满足不等式$\left|f(x)-A\right|<\varepsilon$，则称$A$为函数$f(x)$当$x\rightarrow x_0$时的极限，记为
+    \begin{equation}
+        \lim_{x\rightarrow x_0} f(x)=A \nonumber
+    \end{equation}
+
+    若对于满足$0<x_0-x<\delta(0<x-x_0<\delta)$的一切$x$所对应的$f(x)$都满足不等式$\left|f(x)-A\right|<\varepsilon$，则称$A$为函数$f(x)$当$x$自$x_0$左（右）侧趋于$x_0$时的极限，即左（右）极限，分别记为
+    \begin{equation}
+        \lim_{x\rightarrow x_0^-} f(x) = f(x_0 -0) = A \quad (\lim_{x\rightarrow x_0^+} f(x) = f(x_0 +0) = A \ ) \nonumber
+    \end{equation}
+
+    类似地，可以给出当$x\rightarrow\infty,x\rightarrow +\infty, x\rightarrow -\infty$时，$f(x)$的极限为$A$的定义。
+\end{definition}
+
+\begin{property} 函数极限的性质 \label{property:function_limit}
+    \begin{enumerate}
+        \item 唯一性 \quad 若$\displaystyle\lim_{x\rightarrow x_0} f(x) = A$，则$A$必唯一。
+        \item 有界性 \quad 若$\displaystyle\lim_{x\rightarrow x_0} f(x) = A$，则$f(x)$在$x_0$的某一邻域（$x_0$除外）内是有界的。
+        \item 保号性 \quad 设$f(x)$在$x_0$的某邻域（$x_0$除外）内均有$f(x)\geq 0$（或$f(x)\leq 0$），且$\displaystyle\lim_{x\rightarrow x_0} f(x) = A$，则$A\geq 0$（或$A\leq 0$）。
+    \end{enumerate}
+\end{property}
+
+\section{极限的运算}
+\subsection{无穷小和无穷大}
+\begin{definition}[无穷小与无穷大] \label{def:infty_and_zero}
+    \begin{enumerate}
+        \item 若$\displaystyle\lim_{x\rightarrow x_0 \atop (x\rightarrow \infty)} f(x) = 0$，则称$f(x)$当$x\rightarrow x_0(x\rightarrow\infty)$时为无穷小。
+        
+        \item 若对任意给定的$M>0$，都存在一个正数$\delta(N)$，使得满足$0<\left|x-x_0\right|<\delta(\left|x\right|>N)$的一切$x$所对应的$f(x)$都满足不等式$\left|f(x)\right|>M$，则称$f(x)$当$x\rightarrow x_0(x\rightarrow\infty)$时为无穷大，记为$\displaystyle\lim_{x\rightarrow x_0 \atop (x\rightarrow \infty)} f(x) = \infty$
+    \end{enumerate}
+\end{definition}
+
+\textbf{无穷小和无穷大的关系}（以下所讨论的极限，都是在自变量同一变化过程中的极限）
+
+\vspace{2mm}
+若$\lim f(x) = 0 \quad (f(x)\neq 0)$，则$\lim \dfrac{1}{f(x)} = \infty$
+
+\vspace{2mm}
+若$\lim f(x) = \infty$，则$\lim \dfrac{1}{f(x)} = 0$
+
+\subsection{运算法则}
+\textbf{运算法则} \quad 设$\lim f(x)$和$\lim g(x)$均存在，则
+\begin{flalign*}
+    & \qquad\qquad\quad\lim \left[f(x)\pm g(x)\right]=\lim f(x)\pm \lim g(x) \\ 
+    & \qquad\qquad\quad\lim \left[f(x)\cdot g(x)\right]=\lim f(x)\cdot \lim g(x) \\ 
+    & \qquad\qquad\quad\lim \dfrac{f(x)}{g(x)} = \dfrac{\lim f(x)}{\lim g(x)} (\lim g(x)\neq 0) &
+\end{flalign*}
+
+\vspace{1mm}
+\textbf{无穷小运算法则}
+\begin{enumerate}
+    \item 有限多个无穷小之和仍是无穷小。
+    \item 有限多个无穷小之积仍是无穷小。
+    \item 有界变量与无穷小之积仍为无穷小。
+\end{enumerate}
+\vspace{1mm}
+
+\textbf{无穷小和函数极限的关系}
+
+在一个极限过程中，函数$f(x)$的极限为$A$的充分必要条件是$f(x)=A+\alpha$，其中$\alpha$为这个极限过程中的无穷小量（即$\lim \alpha = 0$）
+
+\section{极限存在定理 \quad 两个重要极限}
+\begin{theorem}[夹逼定理] \label{thm:squeeze_theorem_function}
+    设函数$f(x),g(x),h(x)$有定义，且满足以下条件：
+    \begin{enumerate}
+        \item 当$x\in \{ x \textbar \ 0 < \left|x-x_0\right| < h \}$或（$\left|x\right|>M$）时，有$g(x)\leq f(x) \leq h(x)$成立。
+        \item $\displaystyle \lim_{x\rightarrow x_0 \atop (x\rightarrow\infty)} g(x) = \lim_{x\rightarrow x_0 \atop (x\rightarrow\infty)} h(x) = a$，则$\displaystyle\lim_{x\rightarrow x_0 \atop (x\rightarrow\infty)} f(x)$存在，且$\displaystyle\lim_{x\rightarrow x_0 \atop (x\rightarrow\infty)} f(x) = a$
+    \end{enumerate}
+\end{theorem}
+
+\begin{proof}
+    假设$\varepsilon>0$，因为$\displaystyle\lim_{x\rightarrow x_0} g(x) = a$，存在一个数$\delta_1>0$
+    \begin{equation}
+        \mbox{如果} \qquad 0<\left|x - x_0\right| <\delta_1 \qquad \mbox{然后} \qquad \left|g(x) - a\right| < \varepsilon \nonumber
+    \end{equation}
+
+    即
+    \begin{equation}
+        \mbox{如果} \qquad 0<\left|x - x_0\right| <\delta_1 \qquad \mbox{然后} \qquad a-\varepsilon < g(x) < a+\varepsilon \nonumber
+    \end{equation}
+
+    因为$\displaystyle\lim_{x\rightarrow x_0} h(x) = a$，存在一个数$\delta_2>0$
+    \begin{equation}
+        \mbox{如果} \qquad 0<\left|x - x_0\right| <\delta_2 \qquad \mbox{然后} \qquad \left|h(x) - a\right| < \varepsilon \nonumber
+    \end{equation}
+
+    即
+    \begin{equation}
+        \mbox{如果} \qquad 0<\left|x - x_0\right| <\delta_2 \qquad \mbox{然后} \qquad a-\varepsilon < h(x) < a+\varepsilon \nonumber
+    \end{equation}
+
+    令$\delta = \min\{ \delta_1, \delta_2 \}$，如果$0<\left|x-x_0\right|<\delta$，则$0<\left|x-x_0\right|<\delta_1$和$0<\left|x-x_0\right|<\delta_2$，所以
+    \begin{equation}
+        a-\varepsilon<g(x)\leq f(x)\leq h(x) < a+\varepsilon \nonumber
+    \end{equation} 
+
+    因此可以得到
+    \begin{equation}
+        a-\varepsilon < f(x) < a+\varepsilon \nonumber
+    \end{equation}
+
+    即$\left|f(x)-a\right|<\varepsilon$，因此$\displaystyle\lim_{x\rightarrow a}f(x) = a$
+\end{proof}
+
+\vspace{2mm}
+\textbf{两个重要极限}：
+\vspace{2mm}
+\begin{enumerate}
+    \item $\displaystyle\lim_{x\rightarrow 0} \dfrac{\sin x}{x} = 1$
+    \item $\displaystyle\lim_{x\rightarrow 0} (1+x)^{\frac{1}{x}} = e$ \quad 或 \quad $\displaystyle\lim_{x\rightarrow\infty} (1+\dfrac{1}{x})^x = e$
+\end{enumerate}
+
+%留个证明
+
+\section{无穷小的比较}
+\textbf{无穷小的阶}
+
+设$\alpha,\beta$都是无穷小，若$\lim\dfrac{\beta}{\alpha}=0$，则称$\beta$是比$\alpha$高阶的无穷小，记作$\beta = o(\alpha)$；若$\lim\dfrac{\beta}{\alpha}=\infty$，则称$\beta$是比$\alpha$低阶的无穷小；若$\lim\dfrac{\beta}{\alpha}=c\neq 0$，则称$\beta$与$\alpha$是同阶无穷小，记作$\beta = O(\alpha)$；
+特别地，当$c=1$时，则称$\beta$与$\alpha$是等价无穷小，记作$\alpha\sim\beta$。
+
+给定无穷小$\beta$，若存在无穷小$\alpha$，使它们的差$\beta-\alpha$是比$\alpha$较高阶的无穷小，即
+\begin{equation}
+    \beta-\alpha = o(\alpha) \qquad \mbox{或} \qquad \beta = \alpha+o(\alpha)\nonumber
+\end{equation}
+
+则称$\alpha$是无穷小$\beta$的主部；
+
+若$\beta$和$\alpha^k(k>0)$是同阶无穷小，则称$\beta$是$\alpha$的$k$阶无穷小。
+
+\textbf{等价无穷小代换定理}
+
+若$\alpha\sim\alpha^{'},\beta\sim\beta^{'}$，且$\lim\dfrac{\alpha^{'}}{\beta^{'}}=A$，则
+\begin{equation}
+    \lim\dfrac{\alpha}{\beta} = \lim\dfrac{\alpha^{'}}{\beta^{'}} = A \nonumber
+\end{equation}
+
+\textbf{常见的等价无穷小}
+
+设$\alpha(x)\rightarrow 0$，则
+\begin{equation}
+    \begin{aligned}
+        & \sin\alpha(x) \sim \tan\alpha(x) \sim \arcsin\alpha(x) \sim \arctan\alpha(x) \sim [e^{\alpha(x)}-1] \sim \ln[1+\alpha(x)] \sim \alpha(x) \\
+        & a^x - 1 \sim x\ln a \\
+        & [1-\cos\alpha(x)] \sim \dfrac{1}{2}[\alpha(x)]^2 \\
+        & [1+\alpha(x)]^k - 1 \sim k\alpha(x) \quad (k\neq 0) \\
+        & \alpha(x) - \sin\alpha(x) \sim \dfrac{1}{6} (\alpha(x))^3 \\
+        & \alpha(x) - \arcsin\alpha(x) \sim -\dfrac{1}{6} (\alpha(x))^3 \\
+        & \alpha(x) - \tan\alpha(x) \sim -\dfrac{1}{3} (\alpha(x))^3 \\ 
+        & \sin\alpha(x) - \tan\alpha(x) \sim -\dfrac{1}{2} (\alpha(x))^3
+    \end{aligned} \nonumber
+\end{equation}
+
+\section{连续函数的运算与初等函数的连续性}
+\begin{definition}[函数的连续性] \label{def:continuity}
+    若$\displaystyle\lim_{x\rightarrow x_0} f(x) = f(x_0)$，则称函数$f(x)$在点$x_0$连续。若函数在区间$I$内每一点连续，则称函数$f(x)$在区间$I$内连续。
+
+    若$\displaystyle\lim_{x\rightarrow x_0^-} f(x)=f(x_0)$，则称函数$f(x)$在点$x_0$左连续；若$\displaystyle\lim_{x\rightarrow x_0^+} f(x)=f(x_0)$，则称函数$f(x)$在点$x_0$右连续。
+\end{definition}
+
+\textbf{充要条件} \quad $f(x)$在$x=x_0$处连续$\Leftrightarrow f(x)$在$x=x_0$处既左连续又右连续。
+\begin{theorem} \label{theorem:continuity}
+    \begin{enumerate}
+        \item 连续函数的四则运算 
+        
+        若函数$f(x),g(x)$在点$x_0$连续，则$f(x)\pm g(x),f(x)g(x),\dfrac{f(x)}{g(x)} \quad (g(x_0)\neq 0)$在点$x_0$也连续；
+
+        \item 复合函数的连续性 \quad 若函数$u=\varphi(x)$在点$x_0$连续，函数$y=f(u)$在点$u_0=\varphi(x_0)$连续，则函数$y=f[\varphi(x)]$在点$x_0$连续；
+
+        \item 初等函数的连续性 \quad 初等函数在其定义区间内均连续；
+
+        \item 反函数的连续性 \quad 设函数$y=f(x)$在区间$(a,b)$内为单调增（减）的连续函数，其值域为$(A,B)$，则必存在反函数$x=f^{-1}(y)$，且$x=f^{-1}(y)$在$(A,B)$内为单调增（减）的连续函数。
+    \end{enumerate}
+\end{theorem}
+
+\textbf{间断点的概念} \quad 若函数$f(x)$在点$x_0$不满足下列三个条件之一：
+\begin{enumerate}
+    \item $f(x)$在点$x_0$有定义；
+    \item $\displaystyle\lim_{x\rightarrow x_0}f(x)$存在；
+    \item $\displaystyle\lim_{x\rightarrow x_0}f(x)=f(x_0)$
+\end{enumerate}
+
+则称点$x_0$是函数$f(x)$的间断点。
+~\\
+
+间断点可分为：
+\begin{enumerate}
+    \item 第一类间断点\quad 左、右极限都存在但不相等的间断点（跳跃间断点）；左右极限不仅存在而且相等的间断点（可去间断点）；
+
+    \item 第二类间断点\quad 左、右极限至少有一个不存在的间断点（无穷间断点、震荡间断点）。
+\end{enumerate}
+
+\section{闭区间上连续函数的性质}
+\begin{theorem}[有界性与最大值最小值定理] \label{theorem:max_and_min_value}
+    在闭区间上连续的函数在该区间上有界且一定能取得它的最大值和最小值。
+\end{theorem}
+
+\begin{theorem}[零点定理] \label{thm:root_theorem}
+    设函数$f(x)$在闭区间$[a,b]$上连续，且$f(a)\cdot f(b)<0$，则在开区间$(a,b)$内至少存在一点$\xi$，使$f(\xi)=0$。
+\end{theorem}
+
+由零点定理可推得介值定理：
+\begin{theorem}[介值定理] \label{thm:the_intermediate_value_theorem}
+    设函数$f(x)$在闭区间$[a,b]$上连续，且在$f(a),f(b)(f(a)\neq f(b))$之间取任意的一个数$C$，在开区间$(a,b)$内至少有一点$\xi$，使得$f(\xi)=C$
+\end{theorem}
+
+\section{数列}
+\subsection{数列的极限}
+一个定义在正整数集合上的函数$a_n=f(n)$（称为整标函数），当自变量$n$按正整数$1,2,3,\cdots$依次增大的顺序取值时，函数按相应的顺序排成一串数：
+\begin{equation}
+    f(1),f(2),f(3),\cdots,f(n),\cdots \nonumber
+\end{equation}
+称为一个无穷数列，简称数列，数列中的每一个数称为数列的项，$f(n)$称为数列的一般项或通项。
+
+\begin{definition}[数列的极限] \label{def:sequence_limit}
+\begin{enumerate}
+    \item 设$\{a_n\}$是一数列，如果存在常数$a$，当$n$无限增大时，$a_n$无限接近（或趋近）于$a$，则称数列$\{a_n\}$收敛，$a$称为数列$\{a_n\}$的极限，或称$\{a_n\}$收敛于$a$，记为$\displaystyle \lim_{n\rightarrow \infty} a_n = a$，或$n\rightarrow \infty,a_n\rightarrow a$。当$n\rightarrow \infty$时，若不存在这样的常数$a$，则称数列$\{a_n\}$发散或不收敛，也可以说极限$\displaystyle \lim_{n\rightarrow \infty} a_n$不存在。
+
+    \item 设$\{a_n\}$为一个数列，$a$为一个常数，若对任意给定的$\varepsilon > 0$，都存在一个正整数$N$，使得$n>N$的一切$a_n$都满足不等式$\left|a_n-a\right|<\varepsilon$，则称$a$为数列$\{a_n\}$当$n\rightarrow \infty$时的极限，记为$\displaystyle \lim_{n\rightarrow \infty} a_n = a$。
+\end{enumerate}
+\end{definition}
+
+\begin{property} 数列极限的性质 \label{property:sequence_limit}
+\begin{enumerate}
+    \item 唯一性 \quad 收敛数列的极限是唯一的。即若数列${a_n}$收敛，且$\displaystyle \lim_{n\rightarrow \infty} a_n = a$和$\displaystyle \lim_{n\rightarrow \infty} a_n = b$，则$a=b$。
+
+    \item 有界性 \quad 假设数列$\{a_n\}$收敛，则数列$\{a_n\}$必有界，即存在常数$M>0$，使得$\left|a_n\right|<M$（任意$n\in N$），这个性质中的$M$显然不是唯一的，重要的是它的存在性。
+
+    \item 保号性 \quad 假设数列$\{a_n\}$收敛，其极限为$a$。
+    \begin{enumerate}
+        \item \quad 若有正整数$N$，使得当$n>N$时$a_n>0$（或$<0$），则$a\geq 0$（或$\leq 0$）。
+        \item \quad 若$a>0$（或$<0$），则有正整数$N$，使得当$n>N$时，$a_n>0$（或$<0$）。
+    \end{enumerate}
+\end{enumerate}
+\end{property}
+
+\subsection{两个极限存在准则}
+\begin{theorem}[夹逼定理] \label{thm:squeeze_theorem_sequence}
+    如果数列$\{a_n\},\{y_n\}$及$\{z_n\}$满足下列条件
+    \begin{enumerate}
+        \item $y_n\leq x_n \leq z_n, n=1,2,\cdots$
+        \item $\displaystyle\lim_{n\rightarrow\infty} y_n = \lim_{n\rightarrow\infty} z_n = a$
+    \end{enumerate}
+    则数列$\{x_n\}$的极限存在，且$\displaystyle\lim_{n\rightarrow \infty} = a$。
+\end{theorem}
+
+\begin{theorem}[单调数列定理] \label{thm:monotonic_sequence_theorem}
+    单调有界数列必有极限。
+\end{theorem}
+
+要证明定理\ref{thm:monotonic_sequence_theorem}，需要引出实数集内的完备性公理证明：
+\begin{axiom}[完备性公理] \label{axi:completeness_axiom}
+    若$S$有上界$M$（对任意$x\in S$有$x\leq M$）的非空实数集，则$S$有最小上界$b$（即$b$为$S$的上界，但若$M$为任一其它上界，则$b\leq M$）。
+\end{axiom}
+
+\begin{proof}
+    假设$\{a_n\}$为单增数列，因为$\{a_n\}$有界，所以集合$S=\{ a_n\textbar n\geq 1\}$有上界。由完备性公理\ref{axi:completeness_axiom}，该数列有一个最小上界$L$。给定$\varepsilon>0$，$L-\varepsilon$不是$S$的上界（因为$L$已经是最小的上界，因此
+    \begin{equation}
+        a_N > L-\varepsilon \quad \mbox{对某些整数}N \nonumber
+    \end{equation}
+
+    但数列递增，所以$a_n\geq a_N$对任意$n\geq N$。因此，如果$n>N$，可得
+    \begin{equation}
+        a_n > L-\varepsilon \nonumber
+    \end{equation}
+
+    所以
+    \begin{equation}
+        0\leq L-a_n<\varepsilon \nonumber
+    \end{equation}
+
+    因为$a_n\leq L$，因此
+    \begin{equation}
+        \left|L-a_n\right| < \varepsilon \quad \mbox{对任意}n>N \nonumber
+    \end{equation}
+
+    因此$\displaystyle\lim_{n\rightarrow \infty}a_n = L$。
+
+    当$\{a_n\}$递减时同理（使用最大下界证明）。
+\end{proof}
+
+\section{*数列极限的求法}
+\subsection{海涅定理及其应用}
+海涅定理搭建起了数列极限和函数极限之间的桥梁，求函数极限问题可以转化成求数列极限的问题，求数列极限的问题也可以转化成求函数极限的问题。同样也可以利用此定理间接的判断敛散性。
+
+\begin{theorem}[海涅定理] \label{thm:henie_theorem}
+    若函数$f(x)$在$\mathring{U}(x_0)$有定义，$\displaystyle\lim_{x\rightarrow x_0} f(x)=A\in R \Leftrightarrow \forall x_n \in \mathring{U}(x_0),\lim_{n\rightarrow\infty}x_n=x_0,\lim_{n\rightarrow\infty}f(x_n)=A$($x_n$是子数列)
+\end{theorem}
+
+\textbf{应用一：证明函数极限不存在或求函数极限}
+\begin{enumerate}
+    \item 若存在子数列$x_n\in\mathring{U}(x_0),\displaystyle\lim_{n\rightarrow\infty}x_n=x_0$使$\{f(x_n)\}$发散，则$\displaystyle\lim_{x\rightarrow x_0}f(x)$不存在。
+
+    \item （双子数列方法）若存在$x_n,y_n\in\mathring{U}(x_0),\displaystyle\lim_{n\rightarrow\infty}x_n=x_0,\lim_{n\rightarrow\infty}y_n=x_0$，且满足$\displaystyle\lim_{n\rightarrow\infty}f(x_n)=A,\lim_{n\rightarrow\infty}f(y_n)=B$，若$A\neq B$，则$\displaystyle\lim_{x\rightarrow x_0}f(x)$不存在，反之则存在。
+
+    \item 若$\displaystyle\lim_{x\rightarrow x_0}f(x)$存在，$x_n\in\mathring{U}(x_0)$，且$x_n\neq x_0.\displaystyle\lim_{n\rightarrow\infty}x_n=x_0,\lim_{n\rightarrow\infty}f(x_n)=A\Rightarrow\lim_{x\rightarrow x_0}f(x)=A$
+\end{enumerate}
+\vspace{2mm}
+
+\begin{example}
+    求证$\displaystyle\lim_{x\rightarrow\infty}\sin x$不存在
+\end{example}
+
+\begin{solution}
+    \textbf{方法一}：任取子数列：$x_n=\dfrac{\pi}{2}+n\pi(n\rightarrow\infty$时,$x_n\rightarrow\infty)$
+
+    $f(x_n)=1,-1,1,-1,1,-1,1,-1,\cdots\cdots$
+
+    由于$\displaystyle\lim_{n\rightarrow\infty}f(x_n)$不存在，所以$\displaystyle\lim_{x\rightarrow\infty}\sin x$不存在。
+    \vspace{4mm}
+
+    \textbf{方法二}：任取两个收敛的子数列，但是可证出极限值不相等——发散
+
+    令$y_n=n\pi,\displaystyle\lim_{n\rightarrow\infty}y_n=0,x_n=2n\pi+\dfrac{\pi}{2},\lim_{n\rightarrow\infty}x_n=1$，两个子数列均是收敛的，但是收敛的极限值不同，所以函数$f(x)=\sin x$是发散的。
+\end{solution}
+\vspace{2mm}
+
+\textbf{应用二：求数列的极限（一般不用于数列和的极限）}
+
+这一类题，一般是给出$n$趋于正无穷，因此大部分都令$\dfrac{1}{n}=x$，让$x$趋近$0^+$，来进行相关操作。也有部分直接令$x=n$，根据题目的式子进行判断。
+\vspace{2mm}
+
+\begin{example}
+    $\displaystyle\lim_{n\rightarrow\infty}\left(n\tan\dfrac{1}{n}\right)^{n^2}$
+\end{example}
+
+\begin{solution}
+    原式=$\displaystyle\lim_{x\rightarrow 0^+}\left(\dfrac{\tan x}{x}\right)^{\frac{1}{x^2}}=\lim_{x\rightarrow0^+}e^{{\frac{1}{x^2}}\ln(1+\frac{\tan x-x}{x})}$
+
+    然后我们可知$\displaystyle\lim_{x\rightarrow0^+}\frac{1}{x^2}\ln \left(1+\frac{\tan x-x}{x}\right)=\lim_{x\rightarrow0^+}\frac{1}{x^2}\frac{\tan x-x}{x}=\dfrac{1}{3}$
+    \vspace{1mm}
+
+    最终可得：原式=$\displaystyle e^{\frac{1}{3}}$
+\end{solution}
+
+\subsection{斯托尔茨定理及其应用}
+斯托尔茨(Stolz)定理有两种形式，即：
+\begin{enumerate}
+    \item $\dfrac{*}{\infty}$\textbf{型的Stolz定理} \quad 设数列$\{a_n\}$是严格单调增加的无穷大量，且$\displaystyle\lim_{n\rightarrow\infty}\dfrac{b_{n+1}-b_n}{a_{n+1}-a_n}=l(\mbox{有限或}\pm\infty)$，则$\displaystyle\lim_{n\rightarrow\infty}\dfrac{b_n}{a_n}=l$。
+
+    \item $\dfrac{0}{0}$\textbf{型的Stolz定理} \quad 设数列$\{a_n\}$和$\{b_n\}$都是无穷小量，其中$\{a_n\}$还是严格单调减少数列，又$\displaystyle\lim_{n\rightarrow\infty}\dfrac{b_{n+1}-b_n}{a_{n+1}-a_n}=l(\mbox{有限或}\pm\infty)$，则$\displaystyle\lim_{n\rightarrow\infty}\dfrac{b_n}{a_n}=l$。
+\end{enumerate}
+
+\begin{example}
+    设$0<x_0<\pi$，当$n\geq 1$时，$x_n=\dfrac{1}{n}\displaystyle\sum_{k=0}^{n-1}\sin x_k$，求极限$\displaystyle\lim_{n\rightarrow\infty}x_n\sqrt{\ln n}$
+\end{example}
+
+\begin{solution}
+    易知，当$n\geq1$时，$0<x_n\leq1$，且$x_n-x_{n+1}=\dfrac{x_n-\sin x_n}{n+1}>0$。所以$\{x_n\}$是单调减有下界的数列，因而
+    \vspace{1mm}
+    
+    收敛。令$\displaystyle\lim_{n\rightarrow\infty}x_n=a$，则$0\leq a\leq1$。利用Stolz定理，得
+    \begin{equation}
+        a=\lim_{n\rightarrow\infty}x_n=\lim_{n\rightarrow\infty}\dfrac{\displaystyle\sum_{k=0}^{n-1}\sin x_k}{n}=\lim_{n\rightarrow\infty}\dfrac{\displaystyle\sum_{k=0}^n \sin x_k - \sum_{k=0}^{n-1}\sin x_k}{(n+1)-n}=\lim_{n\rightarrow\infty}\sin x_n=\sin a
+        \nonumber
+    \end{equation}
+
+    于是，有$a=0$。注意到$\displaystyle\lim_{n\rightarrow\infty}\dfrac{x_{n+1}}{x_n}=\lim_{n\rightarrow\infty} \left( \dfrac{n}{n+1}+\dfrac{1}{n+1}\cdot\dfrac{\sin x_n}{x_n} \right) =1$，再次利用Stolz定理，得
+    \begin{equation}
+    \begin{aligned}
+        \lim_{n\rightarrow\infty}x_n^2\ln n &= \lim_{n\rightarrow\infty}\dfrac{\ln n}{\dfrac{1}{x_n^2}}=\lim_{n\rightarrow\infty}\dfrac{\ln(n+1)-\ln n}{\dfrac{1}{x_{n+1}^2}-\dfrac{1}{x_n^2}}=\lim_{n\rightarrow\infty}\dfrac{\ln(1+\dfrac{1}{n})x_{n+1}^2 x_n^2}{x_n^2-x_{n+1}^2} \\
+        &= \lim_{n\rightarrow\infty}\dfrac{n+1}{n}\cdot\dfrac{x_n^3}{x_n-\sin x_n}\cdot\dfrac{1}{\left( \dfrac{x_n}{x_{n+1}} \right)^2+\dfrac{x_n}{x_{n+1}}}=1\times6\times\dfrac{1}{2}=3
+    \end{aligned}
+        \nonumber
+    \end{equation}
+
+    因此$\displaystyle\lim_{n\rightarrow\infty}x_n\sqrt{\ln n}=\sqrt{3}$
+\end{solution}
+
+\begin{note}
+    这里先后利用了重要极限$\displaystyle\lim_{x\rightarrow0}\dfrac{\sin x}{x}=1,\lim_{x\rightarrow0}\dfrac{\ln(1+x)}{x}=1\mbox{及}\lim_{x\rightarrow0}\dfrac{x-\sin x}{x^3}=\dfrac{1}{6}$
+\end{note}
+
+\subsection{利用Euler常数求极限}
+对于调和数列$H_n=\displaystyle\sum_{k=1}^n \dfrac{1}{k}$，已知极限$\displaystyle\lim_{n\rightarrow\infty}\left(\sum_{k=1}^n\dfrac{1}{k}-\ln n\right)=C$存在，可知$H_n=C+\ln n+\gamma_n$，其中$\displaystyle\lim_{n\rightarrow\infty}\gamma_n=0$，而$C=0.57721566490\cdots$为Euler常数。利用这一等式，可计算一些与数列$\{H_n\}$有关的极限。
+
+\begin{example}
+    设$a_n=\displaystyle\sum_{k=1}^n\left(\dfrac{1}{3k-2}+\dfrac{1}{3k-1}-\dfrac{2}{3k}\right)$，求极限$\displaystyle\lim_{n\rightarrow\infty}a_n$
+\end{example}
+
+\begin{solution}
+    因为$a_n=\displaystyle\sum_{k=1}^n\left(\dfrac{1}{3k-2}+\dfrac{1}{3k-1}-\dfrac{2}{3k}\right)-\sum_{k=1}^n\dfrac{1}{k}=H_{3n}-H_n$，所以
+    \begin{equation}
+    \begin{aligned}
+        \lim_{n\rightarrow\infty}a_n &= \lim_{n\rightarrow\infty}(H_{3n}-H_n)=\lim_{n\rightarrow\infty}(\ln 3n+\gamma_{3n}-\ln n-\gamma_n) \\
+        &= \lim_{n\rightarrow\infty}(\ln 3+\gamma_{3n}-\gamma_n)=\ln 3
+    \end{aligned}
+    \nonumber
+    \end{equation}
+\end{solution}
+
+
+% \begin{problemset}
+% \item 求$\displaystyle\lim_{x\rightarrow \infty} (1+\dfrac{1}{x})^x$
+% \end{problemset}

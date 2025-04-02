@@ -1,0 +1,225 @@
+\setcounter{chapter}{4}
+
+\chapter{定积分}
+
+\begin{introduction}
+    \item 定积分的定义 \ref{def:definite_integral}
+    \item 微积分基本公式
+    \item 定积分的换元法和分部积分法
+    \item 广义积分
+\end{introduction}
+
+\section{定积分的概念与性质}
+\begin{definition}[定积分的定义] \label{def:definite_integral}
+    设$f(x)$是定义在区间$[a,b]$上的有界函数，任取分点$a=x_0<x_1<x_2<\cdots<x_n=b$，将$[a,b]$分为$n$个子区间$[x_{i-1},x_i]$，记$\Delta x_i=x_i-x_{i-1},(i=1,2,\cdots,n)$，又在每个子区间上任取一点$\xi_i\in[x_{i-1},x_i],(i=1,2,\cdots,n)$，若不论对区间$[a,b]$如何分法，也不论$\xi_i$在$[x_{i-1},x_i]$中如何取法，只要当$\displaystyle\lambda=\max_{1\leq i\leq n}\Delta x_i$趋于零时，和式$\displaystyle\sum_{i=1}^n f(\xi_i)\Delta x_i$的极限存在，则称此极限值为$f(x)$在$[a,b]$上的定积分，记为
+    \begin{equation}
+        \int_a^b f(x)\deriv x = \lim_{\lambda\rightarrow0}\sum_{i=1}^n f(\xi_i)\Delta x_i
+        \nonumber
+    \end{equation}
+
+    此时也称$f(x)$在$[a,b]$上可积.
+
+    特别地，把区间$[a,b]$分为$n$等份，$\xi_i$取为每个小区间的右端点，则有
+    \begin{equation}
+        \begin{aligned}
+            &\lim_{n\rightarrow\infty}\dfrac{b-a}{n}\sum_{i=1}^n f\left(a+\dfrac{b-a}{n}i\right)=\int_a^b f(x)\deriv x \\
+            &\lim_{n\rightarrow\infty}\dfrac{1}{n}\sum_{i=1}^n f\left(\dfrac{i}{n}\right)=\int_0^1 f(x)\deriv x  \quad (\mbox{此时}a=0,b=1)
+        \end{aligned}
+        \nonumber
+    \end{equation}
+
+    使用以上两个公式可计算某些和式的极限
+\end{definition}
+
+\begin{property} \label{property:definite_integral}
+    \begin{enumerate}
+        \item 定积分的结果与积分变量无关，即$\displaystyle\int_a^b f(x)\deriv x=\int_a^b f(t)\deriv t$
+        \item $\displaystyle\int_a^a f(x)\deriv x\equiv0$
+        \item $\displaystyle\int_b^a f(x)\deriv x=-\int_a^b f(x)\deriv x$
+        \item 若$f(x)$在$[a,b]$上可积，$k$为任一常数，则$\displaystyle\int_a^b kf(x)\deriv x=k\int_a^b f(x)\deriv x$
+        \item 若$f(x),g(x)$在$[a,b]$上都可积，则
+            \begin{equation}
+                \int_a^b [f(x)\pm g(x)]\deriv x=\int_a^bf(x)\deriv x\pm\int_a^b g(x)\deriv x
+                \nonumber
+            \end{equation}
+        \item 设函数$f(x)$在$[a,c],[c,b],[a,b]$上都可积，则
+            \begin{equation}
+                \int_a^b f(x)\deriv x=\int_a^c f(x)\deriv x+\int_c^b f(x)\deriv x
+                \nonumber
+            \end{equation}
+
+        当$c$点在$[a,b]$外时，结论仍成立
+        \item 设$f(x),g(x)$在$[a,b]$上可积，且满足不等式$f(x)\leq g(x),x\in[a,b]$，则
+            \begin{equation}
+                \int_a^b f(x)\deriv x\leq \int_a^b g(x)\deriv x
+                \nonumber
+            \end{equation}
+        \item 估值定理 \quad 设$f(x)$在$[a,b]$上的最大值、最小值分别为$M$和$m$，则有
+            \begin{equation}
+                m(b-a)\leq \int_a^b f(x)\deriv x\leq M(b-a)
+                \nonumber
+            \end{equation}
+        \item 积分中值定理 \quad 设$f(x)$在$[a,b]$上连续，则在$[a,b]$上至少存在一点$\xi$，使得
+            \begin{equation}
+                \int_a^b f(x)\deriv x=f(\xi)(b-a)
+                \nonumber
+            \end{equation}
+
+            称$\displaystyle\dfrac{1}{b-a}\int_a^b f(x)\deriv x$为函数$f(x)$在$[a,b]$上的积分平均值
+    \end{enumerate}
+\end{property}
+\vspace{2mm}
+
+\textbf{积分不等式} \quad 设$f(x),g(x)$在区间$[a,b]$上可积，则有下列不等式
+\vspace{2mm}
+
+(1)$\displaystyle\left|\int_a^b f(x)\deriv x\right|\leq \int_a^b\left|f(x)\right|\deriv x$
+\vspace{2mm}
+
+(2)许瓦尔兹不等式
+\begin{equation}
+    \left[\int_a^b f(x)g(x)\deriv x\right]^2\leq \int_a^b[f(x)]^2\deriv x\cdot\int_a^b[g(x)]^2\deriv x
+    \nonumber
+\end{equation}
+
+\textbf{一元函数的(常义)可积性}
+
+(1)定积分存在的充分条件
+
+(i)若$f(x)$在$[a,b]$上连续，则$\displaystyle\int_a^b f(x)\deriv x$存在.
+
+(ii)若$f(x)$在$[a,b]$上单调，则$\displaystyle\int_a^b f(x)\deriv x$存在.
+
+(iii)若$f(x)$在$[a,b]$上有界，且只有有限个间断点，则$\displaystyle\int_a^b f(x)\deriv x$存在.
+
+(1)定积分存在的必要条件
+
+可积函数必有界，即若定积分$\displaystyle\int_a^b f(x)\deriv x$存在，则$f(x)$在$[a,b]$上必有界.
+
+\section{微积分基本公式}
+\textbf{1.变上限定积分}
+
+(1)若$f(x)$在$[a,b]$上连续，则$\Phi(x)=\displaystyle\int_a^x f(t)\deriv t$在$[a,b]$上可导，且有
+\begin{equation}
+    \Phi'(x)=\dfrac{\deriv}{\deriv x}\int_a^x f(t)\deriv t=f(x)
+    \nonumber
+\end{equation}
+
+(2)若$f(x)$在$[a,b]$上连续，$g(x)$是可微的，则
+\begin{equation}
+    \dfrac{\deriv}{\deriv x}\left(\int_a^{g(x)} f(t)\deriv t\right)=f[g(x)]g'(x)
+    \nonumber
+\end{equation}
+
+(3)若上、下限都是$x$的可微函数，则
+\begin{equation}
+    \dfrac{\deriv}{\deriv x}\left(\int_{a(x)}^{b(x)} f(t)\deriv t\right)=f[b(x)]b'(x)-f[a(x)]a'(x)
+    \nonumber
+\end{equation}
+
+实际上，这是一个求复合函数的导数问题.
+
+\begin{property} \label{property:integral_with_variable_limit}
+
+    (1)函数$f(x)$在$[a,b]$上可积，则函数$F(x)=\displaystyle\int_a^x f(t)\deriv t$在$[a,b]$上连续.
+
+    (2)函数$f(x)$在$[a,b]$上连续，则函数$F(x)=\displaystyle\int_a^x f(t)\deriv t$在$[a,b]$上可导.
+\end{property}
+
+\textbf{2.定积分和不定积分的关系}
+
+(1)原函数存在定理 \quad 若函数$f(x)$在$[a,b]$上连续，则函数$\Phi(x)=\displaystyle\int_a^x f(t)\deriv t$是$f(x)$在$[a,b]$区间上的一个原函数.
+
+(2)牛顿-莱布尼茨公式 \quad 若$F(x)$是$f(x)$在区间$[a,b]$上的一个原函数，而且$f(x)$在$[a,b]$上连续，则
+\begin{equation}
+    \int_a^b f(x)\deriv x=F(b)-F(a)
+    \nonumber
+\end{equation}
+
+这个公式也称为微积分基本公式，它指出了定积分与不定积分的内在联系.
+
+\section{定积分的换元法和分部积分法}
+\textbf{1.换元积分法} \quad 若函数$f(x)$在区间$[a,b]$上连续；函数$x=\varphi(t)$在区间$[\alpha,\beta]$上单调且具有连续导数，当$\alpha\leq t\leq\beta$时，$a\leq\varphi(t)\leq b$，且$\varphi(\alpha)=a,\varphi(\beta)=b$，则有定积分的换元公式
+\begin{equation}
+    \int_a^b f(x)\deriv x=\int_{\alpha}^{\beta} f[\varphi(t)]\varphi'(t)\deriv t
+    \nonumber
+\end{equation}
+
+\textbf{2.分部积分法} \quad 设函数$u(x),v(x)$在区间$[a,b]$上具有连续导数$u'(x),v'(x)$，则有定积分的分部积分公式
+\begin{equation}
+    \int_a^b u(x)v'(x)\deriv x=[u(x)v(x)] \bigg|_a^b - \int_a^bv(x)u' (x)\deriv x
+    \nonumber
+\end{equation}
+
+\textbf{3.常用公式} \quad 设$f(x)$为连续函数
+\vspace{2mm}
+
+(1)$\displaystyle\int_{-a}^a f(x)\deriv x=\int_0^a[f(x)+f(-x)]\deriv x$
+
+(2)$\displaystyle\int_{-a}^a f(x) \deriv x=\left\{
+\begin{aligned}
+&2\int_0^a f(x)\deriv x,  &f(x)\mbox{是偶函数} \\
+&0, &f(x)\mbox{是奇函数}
+\end{aligned}
+\right.$
+
+(3)$\displaystyle\int_0^{\frac{\pi}{2}} f(\sin x)\deriv x=\int_0^{\frac{\pi}{2}} f(\cos x)\deriv x$
+\vspace{2mm}
+
+(4)$\displaystyle\int_0^\pi xf(\sin x)\deriv x=\dfrac{\pi}{2}\int_0^\pi f(\sin x)\deriv x$
+
+(5)$f(x+L)=f(x),(L>0)$，则$\displaystyle\int_0^L f(x)\deriv x=\int_{-\frac{L}{2}}^{\frac{L}{2}}f(x)\deriv x=\int_a^{a+L} f(x)\deriv x$
+
+(6)$\displaystyle\int_0^{\frac{\pi}{2}}(\sin x)^n\deriv x=\int_0^{\frac{\pi}{2}}(\cos x)^n\deriv x=\left\{ 
+\begin{aligned}
+    & \dfrac{(n-1)!!}{n!!}\cdot \dfrac{\pi}{2}, &\mbox{当}n\mbox{为偶数时} \\
+    & \dfrac{(n-1)!!}{n!!}, &\mbox{当}n\mbox{为奇数时} \\
+\end{aligned}\right.$
+
+(7)$\displaystyle\int_a^b f(x)\deriv x=\int_a^b f(a+b-x)\deriv x$ \quad (区间再现公式)
+
+\section{广义积分}
+\textbf{1.无穷区间上的广义积分} \quad 设函数$f(x)$在区间$[a,+\infty)$上有定义，在$[a,b](b<+\infty)$上可积，若极限$\displaystyle\lim_{b\rightarrow+\infty}\int_a^b f(x)\deriv x$存在，则定义
+\begin{equation}
+    \int_a^{+\infty} f(x)\deriv x=\lim_{b\rightarrow +\infty}\int_a^b f(x)\deriv x
+    \nonumber
+\end{equation}
+
+并称$\displaystyle\int_a^{+\infty} f(x)\deriv x$为$f(x)$在$[a,+\infty)$上的广义积分，这时也称广义积分$\displaystyle\int_a^{+\infty} f(x)\deriv x$存在或收敛；若上述极限不存在，则称广义积分$\displaystyle\int_a^{+\infty} f(x)\deriv x$不存在或发散.
+
+类似地，定义
+\begin{equation}
+    \begin{aligned}
+        &\int_{-\infty}^b f(x)\deriv x=\lim_{a\rightarrow-\infty}\int_a^b f(x)\deriv x \\
+        &\int_{-\infty}^{+\infty}f(x)\deriv x=\int_{-\infty}^c f(x)\deriv x+\int_c^{+\infty} f(x)\deriv x=\lim_{a\rightarrow-\infty}\int_a^cf(x)\deriv x+\lim_{b\rightarrow+\infty}\int_c^b f(x)\deriv x
+    \end{aligned}
+    \nonumber
+\end{equation}
+
+\textbf{2.无界函数的广义积分(瑕积分)} \quad 设函数$f(x)$在区间$[a,b)$上连续，而且$\displaystyle\lim_{x\rightarrow b^-}f(x)=\infty$，若极限\\$\displaystyle\lim_{\varepsilon\rightarrow0^+}\int_a^{b-\varepsilon} f(x)\deriv x$存在，则定义
+\begin{equation}
+    \int_a^b f(x)\deriv x=\lim_{\varepsilon\rightarrow0^+}\int_a^{b-\varepsilon} f(x)\deriv x
+    \nonumber
+\end{equation}
+
+并称$\displaystyle\int_a^b f(x)\deriv x$为$f(x)$在$[a,b)$上的广义积分，这时也称广义积分$\displaystyle\int_a^b f(x)\deriv x$存在或收敛；若上述极限不存在，则称广义积分$\displaystyle\int_a^{+\infty} f(x)\deriv x$不存在或发散.
+
+类似地，若$f(x)$在$(a,b]$上连续，$\displaystyle\lim_{x\rightarrow a^+} f(x)=\infty$，则定义
+\begin{equation}
+    \int_a^b f(x)\deriv x=\lim_{\varepsilon\rightarrow 0^+}\int_{a+\varepsilon}^b f(x)\deriv x
+    \nonumber
+\end{equation}
+
+若$f(x)$在$(a,b)$上连续，$\displaystyle\lim_{x\rightarrow a^+} f(x)=\infty,\lim_{x\rightarrow b^-} f(x)=\infty$，则定义
+\begin{equation}
+    \int_a^b f(x)\deriv x=\lim_{\varepsilon_1\rightarrow 0^+}\int_{a+\varepsilon_1}^c f(x)\deriv x+\lim_{\varepsilon_2\rightarrow0^+}\int_c^{b-\varepsilon_2} f(x)\deriv x
+    \nonumber
+\end{equation}
+
+\textbf{3.反常积分敛散性判别的两个重要结论}
+\vspace{2mm}
+
+(1)无穷区间的反常积分$\displaystyle\int_1^{+\infty}\dfrac{\deriv x}{x^p}$：在$p>1$时收敛，在$p\leq1$时发散.
+\vspace{2mm}
+
+(2)无界函数的反常积分$\displaystyle\int_0^1\dfrac{\deriv x}{x^p},(p>0,\mbox{奇点}\ x=0)$：在$0<p<1$时收敛，在$p\geq1$时发散.

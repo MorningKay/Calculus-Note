@@ -1,0 +1,421 @@
+\setcounter{chapter}{9}
+
+\chapter{曲线积分与曲面积分}
+
+\begin{introduction}
+    \item 对弧长的曲线积分
+    \item 对坐标的曲线积分
+    \item 格林公式
+    \item 对面积的曲面积分
+    \item 对坐标的曲面积分
+    \item 高斯公式、通量和散度
+    \item 斯托克斯公式、环流量和旋度
+\end{introduction}
+
+\section{对弧长的曲线积分}
+
+\textbf{对弧长的曲线积分的概念}（又称第一类曲线积分）
+
+\begin{equation*}
+    \int_{L}f(x,y)\deriv s=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n}f(\xi_i, \eta_i)\Delta s_{i}
+\end{equation*}
+
+如果函数$f(x,y)$在曲线$L$上连续，则$f(x,y)$在曲线$L$上对弧长的曲线积分$\int_{L}f(x,y)\deriv s$一定存在.
+
+上述概念可以推广到空间，如果$f(x,y,z)$是定义在空间中分段光滑曲线$L$上的有界函数，则函数$f(x,y,z)$在曲线$L$上对弧长的曲线积分是
+\begin{equation*}
+    \int_{L}f(x,y,z)\deriv s=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n}f(\xi_i, \eta_i, \zeta_i)\Delta s_{i}
+\end{equation*}
+
+\begin{property}\label{property: line_integral}
+    \begin{enumerate}
+        \item $\int_{L}[f_1(x,y)\pm f_2(x,y)]\deriv s=\int_{L}f_1(x,y)\deriv s\pm\int_{L}f_2(x,y)\deriv s$
+        \item $\int_{L}k\cdot f(x,y)\deriv s=k\int_{L}f(x,y)\deriv s$，其中$k$为常数
+        \item 若$L=L_1+L_2$，则
+        \begin{equation*}
+            \int_{L}f(x,y)\deriv s=\int_{L_1}f(x,y)\deriv s+\int_{L_2}f(x,y)\deriv s
+        \end{equation*}
+    \end{enumerate}
+\end{property}
+
+\textbf{对弧长曲线积分的计算法}
+
+(1)设函数$f(x,y)$在平面曲线
+\begin{equation*}
+    L:
+    \begin{cases}
+        x=x(t) \\
+        y=y(t)
+    \end{cases}
+    \quad (\alpha\leq t\leq \beta)
+\end{equation*}
+上连续，$x'(t),y'(t)$在区间$[\alpha,\beta]$上连续，则
+\begin{equation*}
+    \int_{L}f(x,y)\deriv s=\int_{\alpha}^{\beta}f[x(t),y(t)]\sqrt{[x'(t)]^{2}+[y'(t)]^{2}}\deriv t
+\end{equation*}
+
+如果曲线$L$的方程为$y=y(x),(a\leq x\leq b)$且$y'(x)$在区间$[a,b]$上连续，则
+\begin{equation*}
+    \int_{L}f(x,y)\deriv s=\int_{a}^{b}f[x,y(x)]\sqrt{1+[y'(x)]^{2}}\deriv x
+\end{equation*}
+
+(2)设函数$f(x,y,z)$在空间曲线
+\begin{equation*}
+    L:
+    \begin{cases}
+        x=x(t) \\
+        y=y(t) \\
+        z=z(t)
+    \end{cases}
+    \quad (\alpha\leq t\leq \beta)
+\end{equation*}
+上连续，$x'(t),y'(t),z'(t)$在区间$[\alpha,\beta]$上连续，则
+\begin{equation*}
+    \int_{L}f(x,y,z)\deriv s=\int_{\alpha}^{\beta}f[x(t),y(t),z(t)]\sqrt{[x'(t)]^{2}+[y'(t)]^{2}+[z'(t)]^{2}}\deriv t
+\end{equation*}
+
+\textbf{普通对称性与轮换对称性}
+
+\textbf{(1)普通对称性}
+
+假设$\Gamma$关于$yOz$面对称，则
+\begin{equation*}
+    \int_{\Gamma}f(x,y,z)\deriv s=
+    \begin{cases}
+        2\displaystyle\int_{\Gamma_1}f(x,y,z)\deriv s, \quad & f(x,y,z)=f(-x,y,z) \\
+        0, \quad & f(x,y,z)=-f(-x,y,z)
+    \end{cases}
+\end{equation*}
+其中$\Gamma_1$是$\Gamma$在$yOz$面前面的部分.
+
+关于其他坐标面对称的情况与此类似.
+
+\textbf{(2)轮换对称性}
+若把$x$与$y$对调后，$\Gamma$不变，则$\displaystyle\int_{\Gamma}f(x,y,z)\deriv s=\int_{\Gamma}f(y,x,z)\deriv s$，这就是轮换对称性.
+
+关于其他情况与此类似.
+
+\section{对坐标的曲线积分}
+
+\textbf{对坐标的曲线积分的概念}（又称第二类曲线积分）
+
+\begin{align*}
+    & \int_{L}P(x,y)\deriv x=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n} P(\xi_i, \eta_i)\Delta x_{i} \\
+    & \int_{L}Q(x,y)\deriv y=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n} Q(\xi_i, \eta_i)\Delta y_{i}
+\end{align*}
+
+如果函数$P(x,y)$和$Q(x,y)$在有向曲线$L$上连续，上述积分都存在.
+
+类似地，在空间有向曲线$\Gamma$上对坐标$x,y,z$的曲线积分
+\begin{align*}
+    & \int_{\Gamma}P(x,y,z)\deriv x=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n} P(\xi_i, \eta_i, \zeta_i)\Delta x_{i} \\
+    & \int_{\Gamma}Q(x,y,z)\deriv y=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n} Q(\xi_i, \eta_i, \zeta_i)\Delta y_{i} \\
+    & \int_{\Gamma}R(x,y,z)\deriv z=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n} R(\xi_i, \eta_i, \zeta_i)\Delta z_{i}
+\end{align*}
+
+\begin{property}
+    $\int_{\overset{\Large\frown}{AB}}P\deriv x+Q\deriv y=-\int_{\overset{\Large\frown}{BA}}P\deriv x+Q\deriv y$
+\end{property}
+
+\textbf{对坐标的曲线积分的计算法}
+
+(1)设函数$P(x,y)$和$Q(x,y)$在有向曲线$L$上连续，$L$的参数方程为
+\begin{equation*}
+    L:
+    \begin{cases}
+        x=x(t) \\
+        y=y(t)
+    \end{cases}
+    \quad (\alpha\leq t\leq \beta)
+\end{equation*}
+且$x'(t),y'(t)$连续，而$t=\alpha$时对应于起点$A$，$t=\beta$对应于终点$B$，则
+\begin{align*}
+    & \int_{\overset{\Large\frown}{AB}}P(x,y)\deriv x=\int_{\alpha}^{\beta} P[x(t),y(t)]x'(t)\deriv t \\
+    & \int_{\overset{\Large\frown}{AB}}Q(x,y)\deriv y=\int_{\alpha}^{\beta} Q[x(t),y(t)]y'(t)\deriv t
+\end{align*}
+
+(2)如果曲线$L$是由方程$y=y(x)(a\leq x\leq b)$给出，曲线$L$的起点$A$的横坐标为$x=a$，终点$B$的横坐标为$x=b$，函数$y(x)$具有连续的一阶导数，则
+\begin{align*}
+    & \int_{\overset{\Large\frown}{AB}}P(x,y)\deriv x=\int_{a}^{b} P[x,y(x)]\deriv x \\
+    & \int_{\overset{\Large\frown}{AB}}Q(x,y)\deriv y=\int_{a}^{b} Q[x,y(x)]y'(x)\deriv x
+\end{align*}
+
+(3)如果曲线$L$是由方程$x=x(y)(c\leq y\leq d)$给出，曲线$L$的起点$A$的纵坐标为$y=c$，终点$B$的纵坐标为$y=d$，函数$x(y)$具有连续的一阶导数，则
+\begin{align*}
+    & \int_{\overset{\Large\frown}{AB}}P(x,y)\deriv x=\int_{c}^{d} P[x(y),y]x'(y)\deriv y \\
+    & \int_{\overset{\Large\frown}{AB}}Q(x,y)\deriv y=\int_{c}^{d} Q[x(y),y]\deriv y
+\end{align*}
+
+(4)对于空间曲线积分，如果函数$P(x,y,z)$，$Q(x,y,z)$，$R(x,y,z)$在有向曲线$\Gamma$上连续，$\Gamma$的参数方程为
+\begin{equation*}
+    \Gamma:
+    \begin{cases}
+        x=x(t) \\
+        y=y(t) \\
+        z=z(t)
+    \end{cases}
+    \quad (\alpha\leq t\leq \beta)
+\end{equation*}
+而$x'(t),y'(t),z'(t)$连续，且$t=\alpha$时对应于起点$A$，$t=\beta$对应于终点$B$，则
+\begin{align*}
+    & \int_{\Gamma}P(x,y,z)\deriv x=\int_{\alpha}^{\beta} P[x(t),y(t),z(t)]x'(t)\deriv t \\
+    & \int_{\Gamma}Q(x,y,z)\deriv y=\int_{\alpha}^{\beta} Q[x(t),y(t),z(t)]y'(t)\deriv t \\
+    & \int_{\Gamma}R(x,y,z)\deriv z=\int_{\alpha}^{\beta} R[x(t),y(t),z(t)]z'(t)\deriv t
+\end{align*}
+
+\textbf{两类曲线积分的关系}
+
+(1)设平面上有向曲线$L$上任一点$M(x,y)$处与$L$方向一致的切线的方向余弦为
+\begin{equation*}
+    \cos\alpha=\frac{\deriv x}{\deriv s},\quad \cos\beta=\frac{\deriv y}{\deriv s}
+\end{equation*}
+则
+\begin{equation*}
+    \int_{L}P\deriv x+Q\deriv y=\int_{L}(P\cos\alpha+Q\cos\beta)\deriv s
+\end{equation*}
+
+(2)设空间有向曲线$\Gamma$上任一点$N(x,y,z)$处与$\Gamma$方向一致的切线的方向余弦为
+\begin{equation*}
+    \cos\alpha=\frac{\deriv x}{\deriv s},\quad \cos\beta=\frac{\deriv y}{\deriv s},\quad \cos\gamma=\frac{\deriv z}{\deriv s}
+\end{equation*}
+则
+\begin{equation*}
+    \int_{\Gamma}P\deriv x+Q\deriv y+R\deriv z=\int_{\Gamma}(P\cos\alpha+Q\cos\beta+R\cos\gamma)\deriv s
+\end{equation*}
+
+\section{格林公式及其应用}
+
+\textbf{格林公式}
+
+设函数$P(x,y)$，$Q(x,y)$在平面区域$D$及其边界曲线$L$上具有连续的一阶偏导数，则
+\begin{equation*}
+    \oint_{L}P\deriv x+Q\deriv y=\iint \limits_{D}\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\deriv x\deriv y
+\end{equation*}
+其中$L$取正向.
+
+\textbf{平面上曲线积分与路径无关的条件}
+
+设函数$P(x,y)$，$Q(x,y)$在平面单连通区域$D$内具有连续的一阶偏导数，则下面四个命题等价
+\begin{enumerate}
+    \item 曲线$L(\overset{\Large\frown}{AB})$是$D$内由点$A$到点$B$的一段有向曲线，则曲线积分
+    \begin{equation*}
+        \int_{L}P\deriv x+Q\deriv y
+    \end{equation*}
+    与路径无关，只与起点$A$和终点$B$有关.
+
+    \item 在区域$D$内沿任意一条闭曲线$L$的曲线积分有
+    \begin{equation*}
+        \oint_{L}P\deriv x+Q\deriv y=0
+    \end{equation*}
+
+    \item 在区域$D$内任意一点$(x,y)$处有
+    \begin{equation*}
+        \dfrac{\partial Q}{\partial x}=\dfrac{\partial P}{\partial y}
+    \end{equation*}
+
+    \item 在区域$D$内存在函数$u(x,y)$，使得$P\deriv x+Q\deriv y$是该二元函数$u(x,y)$的全微分，且有
+    \begin{equation*}
+        u(x,y)=\int_{(x_0,y_0)}^{(x,y)}P\deriv x+Q\deriv y
+    \end{equation*}
+    其中$(x_0,y_0)$是区域$D$内的某一定点，$(x,y)$是$D$内的任意一点.
+\end{enumerate}
+
+\section{对面积的曲面积分}
+
+\textbf{对面积的曲面积分的概念}（又称第一类曲面积分）
+\begin{equation*}
+    \iint \limits_{\Sigma}f(x,y,z)\deriv S=\lim_{\lambda\rightarrow 0}\sum_{i=1}^{n}f(\xi_i,\eta_i,\zeta_i)\Delta S_i
+\end{equation*}
+
+\textbf{对面积的曲面积分计算法}
+
+设光滑曲面$\Sigma$的方程为$z=z(x,y)$，$\Sigma$在$xOy$平面上的投影域为$D_{xy}$，函数$z=z(x,y)$具有一节连续的偏导数，被积函数$f(x,y,z)$在$\Sigma$上连续，则
+\begin{equation*}
+    \iint \limits_{\Sigma}f(x,y,z)\deriv S=\iint \limits_{D_{xy}}f[x,y,z(x,y)]\sqrt{1+\left(\frac{\partial z}{\partial x}\right)^{2}+\left(\frac{\partial z}{\partial y}\right)^{2}}\deriv x\deriv y
+\end{equation*}
+
+当光滑曲面$\Sigma$的方程为$x=x(y,z)$或$y=y(x,z)$时，可以把曲面积分化为相应的二重积分
+\begin{equation*}
+    \iint \limits_{\Sigma}f(x,y,z)\deriv S=\iint \limits_{D_{yz}}f[x(y,z),y,z]\sqrt{1+\left(\frac{\partial x}{\partial y}\right)^{2}+\left(\frac{\partial x}{\partial z}\right)^{2}}\deriv y\deriv z
+\end{equation*}
+或
+\begin{equation*}
+    \iint \limits_{\Sigma}f(x,y,z)\deriv S=\iint \limits_{D_{xz}}f[x,y(x,z),z]\sqrt{1+\left(\frac{\partial y}{\partial x}\right)^{2}+\left(\frac{\partial y}{\partial z}\right)^{2}}\deriv x\deriv z
+\end{equation*}
+其中$D_{yz}$，$D_{xz}$分别是$\Sigma$在$yz$平面和$xz$平面上的投影域.
+
+\textbf{普通对称性与轮换对称性}
+
+\textbf{(1)普通对称性}
+
+假设$\Sigma$关于$yOz$面对称，则
+\begin{equation*}
+    \iint\limits_{\Sigma}f(x,y,z)\deriv S=
+    \begin{cases}
+        2\displaystyle\iint\limits_{\Sigma_1}f(x,y,z)\deriv S, \quad & f(x,y,z)=f(-x,y,z) \\
+        0, \quad & f(x,y,z)=-f(-x,y,z)
+    \end{cases}
+\end{equation*}
+其中$\Sigma_1$是$\Sigma$在$yOz$面前面的部分.
+
+关于其他坐标面对称的情况与此类似.
+
+\textbf{(2)轮换对称性}
+若把$x$与$y$对调后，$\Sigma$不变，则$\displaystyle\iint\limits_{\Sigma}f(x,y,z)\deriv S=\iint\limits_{\Sigma}f(y,x,z)\deriv S$，这就是轮换对称性.
+
+关于其他情况与此类似.
+
+\section{对坐标的曲面积分}
+
+\textbf{对坐标的曲面积分的概念}（又称第二类曲面积分）
+
+有向曲面 \quad 通常遇到的曲面都是双侧的，规定了正侧的曲面称为有向曲面
+
+设$\Sigma$为光滑的有向曲面，$P(x,y,z)$，$Q(x,y,z)$，$R(x,y,z)$都是定义在$\Sigma$上的有界函数，将曲面$\Sigma$任意分成$n$个小曲面$\Delta S_i(i=1,2,\cdots,n)$，在每个小曲面上任取一点$N_i(\xi_i,\eta_i,\zeta_i)$，曲面$\Sigma$的正侧在点$N_i$处的法向量为
+\begin{equation*}
+    \bm{n}_i=\cos\alpha_i\bm{i}+\cos\beta_i\bm{j}+\cos\gamma_i\bm{k}
+\end{equation*}
+有向小曲面$\Delta S_i$在$xOy$平面上投影为$\Delta S_{i,xy}=\Delta S_i\cos\gamma_i$，如果当各小曲面直径的最大值$\lambda\rightarrow 0$时，和式$\sum_{i=1}^n R(\xi_i,\eta_i,\zeta_i)\Delta S_{i,xy}$的极限存在，则称此极限为函数$R(x,y,z)$在有向曲面$\Sigma$的正侧上对坐标$x,y$的曲面积分，记为$\iint \limits_{\Sigma}R(x,y,z)\deriv x\deriv y$，即
+\begin{equation*}
+    \iint \limits_{\Sigma}R(x,y,z)\deriv x\deriv y=\lim_{\lambda\rightarrow 0}\sum_{i=1}^n R(\xi_i,\eta_i,\zeta_i)\Delta S_{i,xy}
+\end{equation*}
+
+类似地，函数$P(x,y,z)$在有向曲面$\Sigma$的正侧上对坐标$y,z$的曲面积分
+\begin{equation*}
+    \iint \limits_{\Sigma}P(x,y,z)\deriv y\deriv z=\lim_{\lambda\rightarrow 0}\sum_{i=1}^n P(\xi_i,\eta_i,\zeta_i)\Delta S_{i,yz}
+\end{equation*}
+其中$\Delta S_{i,yz}=\Delta S_i\cos\alpha_i$.
+
+函数$Q(x,y,z)$在有向曲面$\Sigma$的正侧上对坐标$x,z$的曲面积分
+\begin{equation*}
+    \iint \limits_{\Sigma}Q(x,y,z)\deriv x\deriv z=\lim_{\lambda\rightarrow 0}\sum_{i=1}^n Q(\xi_i,\eta_i,\zeta_i)\Delta S_{i,xz}
+\end{equation*}
+其中$\Delta S_{i,xz}=\Delta S_i\cos\beta_i$.
+
+\begin{property}
+    若$\Sigma$表示有向曲面的正侧，该曲面的另一侧为负侧记为$\Sigma^{-}$，则有
+    \begin{equation*}
+        \iint \limits_{\Sigma}P\deriv y\deriv z+Q\deriv x\deriv z+R\deriv x\deriv y=-\iint \limits_{\Sigma^{-}}P\deriv y\deriv z+Q\deriv x\deriv z+R\deriv x\deriv y
+    \end{equation*}
+    即当积分曲面改变为相反侧时，对坐标的曲面积分要改变符号
+\end{property}
+
+\textbf{对坐标的曲面积分的计算法}
+
+设光滑曲面$\Sigma$是由方程$z=z(x,y)$所给出的曲面上侧，角$\gamma$是曲面$\Sigma$的法向量$\bm{n}$与$z$轴的夹角，此时$\cos\gamma>0$，曲面$\Sigma$在$xOy$平面上的投影区域为$D_{xy}$，函数$z=z(x,y)$在$D_{xy}$上具有一阶连续偏导数，被积函数$R(x,y,z)$在$\Sigma$上连续，则
+\begin{equation*}
+    \iint \limits_{\Sigma}R(x,y,z)\deriv x\deriv y=\iint \limits_{D_{xy}}R[x,y,z(x,y)]\deriv x\deriv y
+\end{equation*}
+如果积分曲面取在$\Sigma$的下侧，此时$\cos\gamma<0$，则
+\begin{equation*}
+    \iint \limits_{\Sigma}R(x,y,z)\deriv x\deriv y=-\iint \limits_{D_{xy}}R[x,y,z(x,y)]\deriv x\deriv y
+\end{equation*}
+
+当曲面$\Sigma$是母线平行于$z$轴的柱面$F(x,y)=0$时，此时$\cos\gamma=\cos\dfrac{\pi}{2}=0$，则
+\begin{equation*}
+    \iint \limits_{\Sigma}R(x,y,z)\deriv x\deriv y=0
+\end{equation*}
+类似地有
+\begin{align*}
+    & \iint \limits_{\Sigma}P(x,y,z)\deriv y\deriv z=\pm\iint \limits_{D_{yz}}P[x(y,z),y,z]\deriv y\deriv z\\
+    & \iint \limits_{\Sigma}Q(x,y,z)\deriv x\deriv z=\pm\iint \limits_{D_{xz}}Q[x,y(x,z),z]\deriv x\deriv z
+\end{align*}
+
+\textbf{两类曲面积分之间的关系}
+
+设曲面$\Sigma$上任一点$(x,y,z)$处法向量$\bm{n}$的方向余弦为$(\cos\alpha,\cos\beta,\cos\gamma)$，则有
+\begin{equation*}
+    \iint \limits_{\Sigma}P\deriv y\deriv z+Q\deriv x\deriv z+R\deriv x\deriv y=\iint \limits_{\Sigma}\left(P\cos\alpha+Q\cos\beta+R\cos\gamma\right)\deriv S
+\end{equation*}
+
+\section{高斯公式 \quad 通量与散度}
+\textbf{1.高斯(Gauss)公式}
+
+设空间闭区域$\Omega$是由分片光滑的闭区域$\Sigma$所围成，函数$P(x,y,z)$、$Q(x,y,z)$、$R(x,y,z)$在$\Omega$及其边界曲面$\Sigma$上具有连续的一阶偏导数，则
+\begin{equation*}
+    \oiint \limits_{\Sigma}P\deriv y\deriv z+Q\deriv x\deriv z+R\deriv x\deriv y=\iiint \limits_{\Omega}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right)\deriv x\deriv y\deriv z
+\end{equation*}
+或
+\begin{equation*}
+    \oiint \limits_{\Sigma}(P\cos\alpha+Q\cos\beta+R\cos\gamma)\deriv S=\iiint \limits_{\Omega}\left(\frac{\partial P}{\partial x}+\frac{\partial Q}{\partial y}+\frac{\partial R}{\partial z}\right)\deriv x\deriv y\deriv z
+\end{equation*}
+其中$\Sigma$取外侧，$\cos\alpha,\cos\beta,\cos\gamma$为$\Sigma$上任一点$(x,y,z)$处外法线向量的方向余弦
+
+\textbf{2.通量与散度}
+
+设向量场
+\begin{equation*}
+    \bm{A}(x,y,z)=P(x,y,z)\bm{i}+Q(x,y,z)\bm{j}+R(x,y,z)\bm{k}
+\end{equation*}
+其中$P,Q,R$具有连续的一阶偏导数，$\Sigma$是场内的一个有向曲面，则称
+\begin{equation*}
+    \Phi=\iint \limits_{\Sigma}\bm{A}\cdot\deriv \bm{S}=\iint \limits_{\Sigma}P\deriv y\deriv z+Q\deriv x\deriv z+R\deriv x\deriv y
+\end{equation*}
+为向量场$\bm{A}$通过曲面$\Sigma$的通量（或流量）
+
+$\dfrac{\partial P}{\partial x}+\dfrac{\partial Q}{\partial y}+\dfrac{\partial R}{\partial z}$称为向量场$\bm{A}$的散度，记为$\text{div}\bm{A}$，即
+\begin{equation*}
+    \text{div}\bm{A}=\dfrac{\partial P}{\partial x}+\dfrac{\partial Q}{\partial y}+\dfrac{\partial R}{\partial z}
+\end{equation*}
+
+有了散度的概念，高斯公式可写成
+\begin{equation*}
+    \oiint \limits_{\Sigma}\bm{A}\cdot\deriv \bm{S}=\iiint \limits_{\Omega}\text{div}\bm{A}\deriv V
+\end{equation*}
+其中$\Sigma$是空间闭区域$\Omega$的边界曲面的外侧.
+
+\section{斯托克斯公式 \quad 环流量与旋度}
+\textbf{1.斯托克斯(Stokes)公式}
+
+设函数$P(x,y,z)$、$Q(x,y,z)$、$R(x,y,z)$在包含曲面$S$的空间域$\Omega$内具有连续的一阶偏导数，$L$是曲面$\Sigma$的边界曲线，则
+\begin{equation*}
+    \oint_{L}P\deriv x+Q\deriv y+R\deriv z=\iint \limits_{\Sigma}
+    \begin{vmatrix}
+        \deriv y\deriv z & \deriv x\deriv z & \deriv x\deriv y \\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}
+    \deriv S
+    = \iint \limits_{\Sigma}
+    \begin{vmatrix}
+        \cos\alpha & \cos\beta & \cos\gamma \\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}
+    \deriv S
+\end{equation*}
+其中$L$的正向与$\Sigma$所取的正侧符合右手法则，$\cos\alpha,\cos\beta,\cos\gamma$为曲面$S$的正侧上任一点$(x,y,z)$处法向量$\bm{n}$的方向余弦
+
+\textbf{2.环流量与旋度}
+
+设向量场
+\begin{equation*}
+    \bm{A}(x,y,z)=P(x,y,z)\bm{i}+Q(x,y,z)\bm{j}+R(x,y,z)\bm{k}
+\end{equation*}
+$L$是场内的一条有向闭曲线，则称
+\begin{equation*}
+    \Gamma=\oint_{L}\bm{A}\cdot\deriv \bm{r}=\oint_{L}P\deriv x+Q\deriv y+R\deriv z
+\end{equation*}
+为向量场$\bm{A}$沿曲线$L$的环流量，并称向量
+\begin{equation*}
+    \left(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}\right)\bm{i}+\left(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}\right)\bm{j}+\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\bm{k}
+\end{equation*}
+为向量$\bm{A}$的旋度，记作$\text{rot}\bm{A}$，即
+\begin{equation*}
+    \text{rot}\bm{A}=\left(\frac{\partial R}{\partial y}-\frac{\partial Q}{\partial z}\right)\bm{i}+\left(\frac{\partial P}{\partial z}-\frac{\partial R}{\partial x}\right)\bm{j}+\left(\frac{\partial Q}{\partial x}-\frac{\partial P}{\partial y}\right)\bm{k}=
+    \begin{vmatrix}
+        \bm{i} & \bm{j} & \bm{k} \\
+        \dfrac{\partial}{\partial x} & \dfrac{\partial}{\partial y} & \dfrac{\partial}{\partial z} \\
+        P & Q & R
+    \end{vmatrix}
+\end{equation*}
+
+有了旋度的概念，斯托克斯公式可写成
+\begin{equation*}
+    \oint_{L}\bm{A}\cdot\deriv \bm{r}=\iint \limits_{\Sigma}\text{rot}\bm{A}\cdot\deriv \bm{S}
+\end{equation*}
+其中
+\begin{align*}
+    & \deriv \bm{r}=\bm{i}\deriv x+\bm{j}\deriv y+\bm{k}\deriv z \\
+    & \deriv \bm{S}=\bm{i}\deriv x\deriv y+\bm{j}\deriv x\deriv z+\bm{k}\deriv y\deriv z
+\end{align*}

@@ -1,0 +1,278 @@
+\setcounter{chapter}{2}
+
+\chapter{微分中值定理和导数的应用}
+
+\begin{introduction}
+    \item 微分中值定理
+    \item 洛必达法则
+    \item 泰勒公式
+    \item 单调性、凹凸性、极值、最值
+    \item 曲率\ref{def:curvature}
+\end{introduction}
+
+\section{微分中值定理}
+\begin{theorem}[罗尔中值定理] \label{thm:Rolle's_theorem}
+    假设$f(x)$满足以下三个条件：
+    \begin{enumerate}
+        \item $f$在闭区间$[a.b]$上连续
+        \item $f$在开区间$(a,b)$上可导
+        \item $f(a)=f(b)$
+    \end{enumerate}
+
+    则至少存在一点$c\in(a,b)$使得$f'(c)=0$
+\end{theorem}
+
+\begin{theorem}[拉格朗日中值定理] \label{thm:the_mean_value_theorem}
+    假设$f(x)$满足以下三个条件：
+    \begin{enumerate}
+        \item $f$在闭区间$[a.b]$上连续
+        \item $f$在开区间$(a,b)$上可导
+    \end{enumerate}
+
+    则至少存在一点$c\in(a,b)$使得
+    \begin{equation}
+        f'(c) = \dfrac{f(b)-f(a)}{b-a}
+        \nonumber
+    \end{equation}
+
+    或写作
+    \begin{equation}
+        f(b)-f(a) = f'(c)(b-a)
+        \nonumber
+    \end{equation}
+\end{theorem}
+
+\begin{theorem}[柯西中值定理] \label{thm:Cauchy_mean_value_theorem}
+    假设$f(x),g(x)$满足以下三个条件：
+    \begin{enumerate}
+        \item $f,g$在闭区间$[a.b]$上连续
+        \item $f,g$在开区间$(a,b)$上可导
+        \item $g'$在$(a,b)$内每一点处均不为0
+    \end{enumerate}
+
+    则至少存在一点$c\in(a,b)$使得
+    \begin{equation}
+        \dfrac{f(b)-f(a)}{g(b)-g(a)} = \dfrac{f'(c)}{g'(c)}
+        \nonumber
+    \end{equation}
+\end{theorem}
+
+\section{洛必达法则}
+设函数$f(x)$与$g(x)$满足：
+\begin{enumerate}
+    \item 在点$x_0$的某一邻域内（点$x_0$可除外）有定义，且$\displaystyle \lim_{x\rightarrow x_0}f(x)=0, \lim_{x\rightarrow x_0}g(x)=0$
+    
+    （或$\displaystyle \lim_{x\rightarrow x_0}f(x)=\infty, \lim_{x\rightarrow x_0}g(x)=\infty$）
+
+    \item 在该邻域内可导，且$g'(x)\neq 0$
+
+    \item $\displaystyle \lim_{x\rightarrow x_0} \dfrac{f'(x)}{g'(x)}$存在（或为$\infty$）。则$\displaystyle \lim_{x\rightarrow x_0}\dfrac{f(x)}{g(x)}=\lim_{x\rightarrow x_0}\dfrac{f'(x)}{g'(x)}$（或为$\infty$）
+\end{enumerate}
+
+以上两法则对于$x\rightarrow\infty$时的未定式$\dfrac{0}{0},\dfrac{\infty}{\infty}$同样适用。
+
+\section{泰勒公式}
+\textbf{泰勒定理} \quad 若$f(x)$在含有$x_0$的某个邻域内具有直到$n+1$阶的导数，则对于该邻域内任意点$x$，有泰勒公式
+\begin{equation}
+    f(x)=\sum_{k=0}^n \dfrac{f^{(k)}(x_0)}{k!}(x-x_0)^k+ R_n(x)
+    \nonumber
+\end{equation}
+
+其中
+\begin{equation}
+    R_n(x) = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1}
+    \nonumber
+\end{equation}
+
+$\xi$介于$x_0$与$x$之间，$f^{(0)}(x_0)=f(x_0)$。此公式称为$f(x)$在$x_0$处（或按$x-x_0$的幂展开）的带有拉格朗日余项的$n$阶泰勒公式，$R_n(x)$的表达式称为拉格朗日余项。
+
+\begin{proof}
+    记$R_n(x)=f(x)-p_n(x)$，只需证明
+    \begin{equation}
+        R_n(x) = \dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1} \quad (\xi\mbox{在}x_0\mbox{与}x\mbox{之间})
+        \nonumber
+    \end{equation}
+
+    由假设可知，$R_n(x)$在$U(x_0)$内具有$n+1$阶导数，且
+    \begin{equation}
+        R_n(x_0)=R_n'(x_0)=R_n''(x_0)=\cdots=R_n^{(n)}(x_0)=0
+        \nonumber
+    \end{equation}
+
+    对两个函数$R_n(x)$及$(x-x_0)^{n+1}$在以$x_0$及$x$为端点的区间上应用柯西中值定理（显然，这两个函数满足柯西中值定理的条件），得
+    \begin{equation}
+        \dfrac{R_n(x)}{(x-x_0)^{n+1}}=\dfrac{R_n(x)-R_n(x_0)}{(x-x_0)^{n+1}-0}=
+        \dfrac{R_n'(\xi_1)}{(n+1)(\xi_1-x_0)^n} \quad (\xi_1\mbox{在}x_0\mbox{与}x\mbox{之间})
+        \nonumber
+    \end{equation}
+
+    再对两个函数$R_n'(x)$及$(n+1)(x-x_0)^n$在以$x_0$及$\xi_1$为端点的区间上应用柯西中值定理，得
+    \begin{equation}
+        \dfrac{R_n'(\xi_1)}{(n+1)(\xi_1-x_0)^n}=\dfrac{R_n'(\xi_1)-R_n'(x_0)}{(n+1)(\xi_1-x_0)^n -0}=
+        \dfrac{R_n''(\xi_2)}{(n+1)n(\xi_2-x_0)^{n-1}} \quad (\xi_2\mbox{在}x_0\mbox{与}\xi_1\mbox{之间})
+        \nonumber
+    \end{equation}
+
+    照此方法继续做下去，经过$n+1$次后，得
+    \begin{equation}
+        \dfrac{R_n(x)}{(x-x_0)^{n+1}}=\dfrac{R_n^{(n+1)}(\xi)}{(n+1)!} \quad 
+        (\xi\mbox{在}x_0\mbox{与}\xi_n\mbox{之间},\mbox{因而也在}x_0\mbox{与}x\mbox{之间})
+        \nonumber
+    \end{equation}
+
+    注意到$R_n^{(n+1)}(x)=f^{(n+1)}(x)$(因$p_n^{(n+1)}(x)=0$)，则由上式得
+    \begin{equation}
+        R_n(x)=\dfrac{f^{(n+1)}(\xi)}{(n+1)!}(x-x_0)^{n+1} \quad (\xi\mbox{在}x_0\mbox{与}x\mbox{之间})
+        \nonumber
+    \end{equation}
+
+    定理证毕。
+\end{proof}
+
+\vspace{2mm}
+\textbf{麦克劳林公式} \quad 在$x=0$展开的泰勒公式，也称为麦克劳林公式，即
+\begin{equation}
+    f(x)=\sum_{k=0}^n \dfrac{f^{(k)}(0)}{k!}x^k+
+    \dfrac{f^{(n+1)}(\xi)}{(n+1)!}x^{n+1}
+    \nonumber
+\end{equation}
+
+其中$\xi$介于$x_0$与$x$之间。
+
+\textbf{常用的泰勒展开式}
+\begin{equation}
+    \begin{aligned}
+        &e^x = 1+x+\dfrac{x^2}{2!}+\cdots+\dfrac{x^n}{n!}+o(x^n)\\
+        &\sin x = x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}-\cdots+(-1)^n\dfrac{x^{2n+1}}{(2n+1)!}+o(x^{2n+1})\\
+        &\cos x = 1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\dfrac{x^6}{6!}+\cdots+(-1)^n\dfrac{x^{2n}}{(2n)!}+o(x^{2n})\\
+        &\ln(1+x) = x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\cdot+(-1)^n\dfrac{x^{n+1}}{n+1}+o(x^{n+1})\\
+        &\dfrac{1}{1-x} = 1+x+x^2+\cdots+x^n+o(x^n)\\
+        &\dfrac{1}{1+x} = 1-x+x^2-\cdots+(-1)^n x^n+o(x^n)\\
+        &(1+x)^m = 1+mx+\dfrac{m(m-1)}{2!}x^2+\cdots+\dfrac{m(m-1)\cdot \cdots \cdot (m-n+1)}{n!}x^n+o(x^n)
+    \end{aligned}
+    \nonumber
+\end{equation}
+
+\section{函数的单调性与曲线的凹凸性}
+\textbf{1.函数的单调性}
+
+设函数$y=f(x)$在$[a,b]$上连续，在$(a,b)$内可导
+
+(1)若在$(a,b)$内$f'(x)>0$，则$f(x)$在$[a,b]$上单调增加；
+
+(2)若在$(a,b)$内$f'(x)<0$，则$f(x)$在$[a,b]$上单调减少。
+
+\textbf{求$y=f(x)$的单调区间步骤：}
+
+(1)明确定义域并找出无定义端点；
+
+(2)找出使$f'(x)=0$的点（驻点）及导数不存在但函数有意义的点（称这些点为极值疑点）；
+
+(3)把全部上面列出的点按大小列在表上，它们把定义域分割成若干区间，分别根据每个区间上导数的符号判断其单调性。
+
+\textbf{2.曲线的凹凸性与拐点}
+\begin{definition}[凹凸性的定义] \label{def:concave_up_down}
+    若曲线弧上每一点的切线都位于曲线的下方，则称这段弧是凹的，若曲线弧上每一点的切线都位于曲线的上方，则称这段弧是凸的。
+\end{definition}
+
+\textbf{曲线的凹凸性判别法} \quad 设函数$f(x)$在区间$[a,b]$上连续，在区间$(a,b)$内具有二阶导数。如果$f''(x)\leq0$，但$f''(x)$在任何子区间中不恒为零，则曲线弧$y=f(x)$是凸的；如果$f''(x)\geq0$，但$f''(x)$在任何子区间内不恒为零，则曲线弧$y=f(x)$是凹的。
+
+\begin{definition}[拐点的定义] \label{def:inflection_point}
+    连续曲线凹与凸部分的分界点称为曲线的拐点。
+\end{definition}
+
+因为拐点是曲线凹凸弧的分界点，所以在拐点横坐标左右两侧邻近处$f''(x)$必然异号，而在拐点横坐标处$f''(x)$等于零或不存在。
+
+\textbf{拐点存在的必要条件} \quad 设函数$f(x)$在$x_0$点具有二阶导数，则点$(x_0,f(x_0))$是曲线$y=f(x)$的拐点的必要条件是$f''(x_0)=0$。
+
+\textbf{判定曲线凹凸性或求函数的凹、凸区间、拐点的步骤是：}
+
+(1)求出函数的定义域或指定区域，及二阶导数；
+
+(2)在区域内求出所有拐点疑点（二阶导数为0的点、二阶导数不存在但函数有意义的点），函数边界点及使函数无意义的端点，把这些点列在表上，根据二阶导数在各区间上的正负进行判断。
+
+\section{函数的极值与最大值、最小值}
+\textbf{1.函数的极值}
+\begin{definition}[极值的定义] \label{def:extremum}
+    设函数$f(x)$在$x_0$点的某个邻域内有定义，对于该邻域内异于$x_0$的点$x$，如果恒有$f(x)<f(x_0)$，则称$f(x_0)$为$f(x)$的极大值，而称$x_0$为$f(x)$的极大值点；如果恒有$f(x)>f(x_0)$，则称$f(x_0)$为$f(x)$的极小值，而称$x_0$为$f(x)$的极小值点。
+
+    极大值与极小值统称为极值，极大值点与极小值点统称为极值点。
+\end{definition}
+
+\textbf{极值的必要条件} \quad 设函数$f(x)$在$x_0$点可导，且在$x_0$点取得极值，则必有$f'(x_0)=0$。
+
+\textbf{极值第一判别法} \quad 设函数$f(x)$在$x_0$点的某个邻域内可导，且$f'(x_0)=0$，那么
+
+(1)若当$x<x_0$时，$f'(x)>0$；当$x>x_0$时$f'(x)<0$，则$f(x_0)$是$f(x)$的极大值。
+
+(2)若当$x<x_0$时，$f'(x)<0$；当$x>x_0$时$f'(x)>0$，则$f(x_0)$是$f(x)$的极小值。
+
+(3)若在$x_0$的两侧，$f'(x)$的符号相同，则$f(x_0)$不是极值。
+
+\textbf{极值第二判别法} \quad 设函数$f(x)$在$x_0$点处有二阶导数，且$f'(x_0)=0,f''(x_0)\neq0$，则
+
+(1)当$f''(x_0)<0$时，函数$f(x)$在点$x_0$取得极大值；
+
+(2)当$f''(x_0)>0$时，函数$f(x)$在点$x_0$取得极小值。
+
+\textbf{2.求极值的步骤}
+
+(1)求出函数$f(x)$的全部极值疑点——驻点（$f'(x)=0$的点）及导数不存在但函数有意义的内点；
+
+(2)逐个地进行判断。判断的方法一般有两个
+
+方法一：用第一种充分条件，求出导函数$f'(x)$并把它因式分解，根据极值疑点邻近$f'(x)$的符号判断。如果极值疑点较多时，亦可先列表求出单调区间，然后根据各单调区间进行判断。
+
+方法二：用第二种充分条件，即如果是驻点，用二阶导数在该点处的正负判断。
+
+\begin{note}
+    注意方法二的条件是极值疑点必为驻点；该点处存在二阶导数且不为0，否则应改用方法一判断。当$f''(x)$存在但较复杂时，一般也用方法一判断。
+\end{note}
+
+\textbf{3.函数的最大值与最小值}
+
+设函数$f(x)$在$[a,b]$上连续，在$(a,b)$内仅有一个极值点，则若$x_0$是$f(x)$的极大值点，那么$x_0$必为$f(x)$在$[a,b]$上的最大值点；若$x_0$是$f(x)$的极小值点，那么$x_0$必为$f(x)$在$[a,b]$上的最小值点。
+
+\textbf{4.求函数最值的步骤}
+
+(1)找出此区间上的全部极值疑点（即驻点、导数不存在但函数有意义的内点）及使函数有定义的边界点；
+
+(2)分别求出函数在这些点上的函数值并比较其大小，其中最大的函数值就是最大值，最小的函数值就是最小值。注意，若函数在指定区间单调且在边界点处连续，则其边界点必为最值点。
+
+\section{函数图形的描绘}
+\textbf{曲线的渐近线}
+
+若$\displaystyle \lim_{x\rightarrow+\infty}f(x)=A$，则称直线$y=A$为曲线$y=f(x)$的水平渐近线（将$x\rightarrow+\infty$改为$x\rightarrow-\infty$仍有此定义）.
+
+若$\displaystyle \lim_{x\rightarrow x_0^+}f(x)=\infty$，则称直线$x=x_0$为曲线$y=f(x)$的铅直渐近线（将$x\rightarrow x_0^+$改为$x\rightarrow x_0^-$仍有此定义）.
+
+若$\displaystyle \lim_{x\rightarrow+\infty}\dfrac{f(x)}{x}=a(a\neq0)$，且$\displaystyle \lim_{x\rightarrow+\infty}[f(x)-ax]=b$，则称直线$y=ax+b$为曲线$y=f(x)$的斜渐近线（将$x\rightarrow+\infty$改为$x\rightarrow-\infty$仍有此定义）.
+
+\textbf{作图步骤}
+
+(1)写出函数$f(x)$，标出定义域或指定的作图区域；
+
+(2)判断$f(x)$的奇偶性、周期性，（如果有这样的特性，可以缩小作图范围）；
+
+(3)求水平渐近线、铅直渐近线与斜渐近线；
+
+(4)求出$f'(x),f''(x)$，从而求出作图的关键点：极值疑点，拐点疑点，函数$f(x)$的边界点及无意义端点；
+
+(5)列表；
+
+(6)作图，如果作图的关键点（无意义点除外）不够，还可多描一些点，例如$f(x)$与坐标轴的交点等。
+
+\section{曲率}
+\begin{definition}[曲率的定义] \label{def:curvature}
+    在曲线$L$上，有点$N$沿曲线$L$趋于点$M$时，如果极限$\displaystyle\lim_{\Delta s\rightarrow0}\bar{K}=\lim_{\Delta s\rightarrow0}\left|\dfrac{\Delta\alpha}{\Delta s}\right|$存在，则称此极限值为曲线$L$在点$M$处的曲率，记作$\displaystyle K=\lim_{\Delta s\rightarrow0}\left|\dfrac{\Delta \alpha}{\Delta s}\right|$。在$\displaystyle\lim_{\Delta s\rightarrow 0}\dfrac{\Delta \alpha}{\Delta s} = \dfrac{\deriv \alpha}{\deriv s}$存在的条件下，$K$也可以表示为$K=\left|\dfrac{\deriv \alpha}{\deriv s}\right|$.
+\end{definition}
+
+\textbf{计算曲率的公式}
+
+设曲线的直角坐标方程是$y=f(x)$，且$f(x)$具有二阶导数，则得曲率公式
+\begin{equation}
+    K=\dfrac{\left|y''\right|}{(1+y'^2)^{3/2}}
+    \nonumber
+\end{equation}
+
+若曲线由参数方程$\displaystyle \left\{\begin{array}{l} x=\varphi(t) \\ y=\psi(t) \end{array}\right.$$(\alpha\leq t \leq\beta)$给出，则可利用由参数方程确定的函数的求导法，求出$y'_x$及$y''_x$，代入曲率公式即可。

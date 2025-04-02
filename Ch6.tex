@@ -1,0 +1,109 @@
+\setcounter{chapter}{5}
+
+\chapter{定积分的应用}
+
+\begin{introduction}
+    \item 平面图形的面积
+    \item 旋转体的体积
+    \item 旋转曲面的面积
+    \item 弧长公式
+\end{introduction}
+
+\section{定积分在几何上的应用}
+\textbf{1.平面图形的面积}
+
+(1)直角坐标情形：
+
+由连续曲线$y=f_1(x),y=f_2(x),(f_1(x)\leq f_2(x))$与直线$x=a,x=b$围成的图形面积$(a\leq b)$
+\begin{equation}
+    A=\int_a^b [f_2(x)-f_1(x)]\deriv x
+    \nonumber
+\end{equation}
+
+由连续曲线$x=g_1(y),x=g_2(y),(g_1(y)\leq g_2(y))$与直线$y=c,y=d$围成的图形面积$(a\leq b)$
+\begin{equation}
+    A=\int_c^d [g_2(y)-g_1(y)]\deriv y
+    \nonumber
+\end{equation}
+
+(2)极坐标情形：由连续曲线$r=r_1(\theta)$与$r=r_2(\theta)$与两射线$\theta=\alpha,\theta=\beta,(0<\beta-\alpha\leq 2\pi)$围成的曲边扇形的面积
+\begin{equation}
+    A=\dfrac{1}{2}\int_\alpha^\beta \left|r_1^2(\theta)-r_2^2(\theta)\right|\deriv \theta
+    \nonumber
+\end{equation}
+
+\textbf{2.旋转体的体积}
+
+(1)曲线$y=y(x)$与$x=a,x=b,(a<b)$及$x$轴围成的曲边梯形绕$x$轴旋转一周所得到的旋转体的体积
+\begin{equation}
+    V=\pi\int_a^b y^2\deriv x=\pi \int_a^b f^2(x)\deriv x
+    \nonumber
+\end{equation}
+
+(2)曲线$x=x(y)$与$y=c,y=d,(c<d)$及$y$轴围成的曲边梯形绕$y$轴旋转一周所得到的旋转体的体积
+\begin{equation}
+    V=\pi\int_c^d x^2\deriv y=\pi \int_c^d g^2(y)\deriv y
+    \nonumber
+\end{equation}
+
+(3)曲线$y=y_1(x)\geq0$与$y=y_2(x)\geq0$及$x=a,x=b,(a<b)$所围成的平面图形绕$x$轴旋转一周所得到的旋转体的体积
+\begin{equation}
+    V=\pi\int_a^b \left| y_1^2(x)-y_2^2(x) \right| \deriv x
+    \nonumber
+\end{equation}
+
+(4)曲线$y=y(x)$与$x=a,x=b,(0\leq a<b)$及$x$轴围成的曲边梯形绕$y$轴旋转一周所得到的旋转体的体积
+\begin{equation}
+    V_y=2\pi\int_a^b x\left|y(x)\right| \deriv x
+    \nonumber
+\end{equation}
+
+(5)曲线$y=y_1(x)$与$y=y_2(x)$及$x=a,x=b(0\leq a\leq b)$所围成的图形绕$y$轴旋转一周所成的旋转体的体积
+\begin{equation}
+    V=2\pi\int_a^b x\left|y_1(x)-y_2(x)\right| \deriv x
+    \nonumber
+\end{equation}
+
+\textbf{3.旋转曲面的面积}
+
+(1)光滑曲线$y=f(x),(a\leq x\leq b)$绕$x$轴旋转而成的旋转曲面面积
+\begin{equation}
+    S=2\pi \int_a^b \left|y\right|\sqrt{1+y'^2} \deriv x
+    \nonumber
+\end{equation}
+
+(2)光滑曲线$\left\{\begin{aligned}
+    x=x(t) \\
+    y=y(t)
+\end{aligned}\right.,(\alpha\leq t\leq \beta)$绕$x$轴旋转而成的旋转曲面面积
+\begin{equation}
+    S=2\pi \int_\alpha^\beta \left|y(t)\right|\sqrt{[x'(t)]^2+[y'(t)]^2}\deriv t
+    \nonumber
+\end{equation}
+
+\textbf{4.曲线的弧长公式}
+
+(1)光滑曲线$y=f(x),(a\leq x\leq b)$的弧长为
+\begin{equation}
+    l=\int_a^b\sqrt{1+[y'(x)]^2}\deriv x=\int_a^b\sqrt{1+[f'(x)]^2}\deriv x
+    \nonumber
+\end{equation}
+
+(2)光滑曲线$\left\{\begin{aligned}
+    x=x(t) \\
+    y=y(t)
+\end{aligned}\right.,(\alpha\leq t\leq \beta)$的弧长为
+\begin{equation}
+    l=\int_\alpha^\beta\sqrt{[x'(t)]^2+[y'(t)]^2}\deriv t
+    \nonumber
+\end{equation}
+
+(3)光滑曲线$r=r(\theta),\varphi_0\leq\theta\leq\varphi_1$的弧长
+\begin{equation}
+    l=\int_{\varphi_0}^{\varphi_1}\sqrt{r^2+r'^2}\deriv \theta
+    \nonumber
+\end{equation}
+
+\textbf{5.用定积分表达和计算函数的平均值}
+
+设$x\in[a,b]$，函数$y(x)$在$[a,b]$上的平均值为$\bar{y}=\dfrac{1}{b-a}\displaystyle\int_a^b y(x)\deriv x$

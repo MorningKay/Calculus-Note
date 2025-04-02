@@ -1,0 +1,334 @@
+\setcounter{chapter}{10}
+
+\chapter{无穷级数}
+
+\begin{introduction}
+    \item 常数项级数
+    \item 正项级数的审敛法
+    \item 任意项级数的审敛法
+    \item 幂级数
+    \item 傅立叶级数
+\end{introduction}
+
+\section{常数项级数的概念和性质}
+
+\textbf{常数项级数的概念}
+
+设有数列$\{u_n\}:u_1,u_2,\cdots,u_n,\cdots$，将其各项累加的所得的式子$u_1+u_2+\cdots+u_n+\cdots$称为（常数项）无穷级数，简称（常数项）级数，记作$\displaystyle\sum_{n=1}^\infty u_n$，即$\displaystyle\sum_{n=1}^\infty u_n=u_1+u_2+\cdots+u_n+\cdots$。
+
+\textbf{常数项级数收敛的概念}
+
+设给定常数项级数
+\begin{equation}
+    \sum_{n=1}^\infty u_n=u_1+u_2+\cdots+u_n+\cdots
+    \label{constant_series}
+\end{equation}
+记$S_n=\displaystyle\sum_{n=1}^\infty u_n=u_1+u_2+\cdots+u_n$为级数$\sum_{n=1}^\infty u_n$的前$n$项部分和，若$\displaystyle\lim_{n\rightarrow\infty}S_n=S$（有限值），则称级数(\ref{constant_series})收敛；若$\displaystyle\lim_{n\rightarrow\infty}S_n$不存在，则称级数(\ref{constant_series})发散。
+
+\begin{property}
+    \begin{enumerate}
+        \item 级数$\displaystyle\sum_{n=1}^\infty u_n$与$\displaystyle\sum_{n=1}^\infty ku_n$有相同敛散性（$k$是不为零的常数）；
+        
+        \item 若级数$\displaystyle\sum_{n=1}^\infty u_n$，$\sum_{n=1}^\infty v_n$均收敛，则级数$\displaystyle\sum_{n=1}^\infty(u_n\pm v_n)$也收敛，且有
+        \begin{equation*}
+            \sum_{n=1}^\infty(u_n+v_n)=\sum_{n=1}^\infty u_n+\sum_{n=1}^\infty v_n
+        \end{equation*}
+
+        \item 在级数中去掉或添加有限项，不会影响级数的敛散性（但收敛时，级数和一般会改变）；
+        
+        \item 收敛级数任意加括号后所成的级数仍收敛。如果正项级数加括号后所成的级数收敛，则原级数收敛；
+        
+        \item 级数收敛的必要条件：若$\displaystyle\sum_{n=1}^\infty u_n$收敛，则$\displaystyle\lim_{n\rightarrow\infty}u_n=0$.
+    \end{enumerate}
+\end{property}
+
+\textbf{柯西收敛准则}
+
+级数$\sum_{n=1}^\infty u_n$收敛的充分必要条件：对任意给定的正数$\varepsilon$，总存在$N$，使得当$n>N$时，对于任意的自然数$p=1,2,3,\cdots$，不等式
+\begin{equation*}
+    |u_{n+1}+u_{n+2}+\cdots+u_{n+p}|<\varepsilon
+\end{equation*}
+恒成立.
+
+\section{正项级数的审敛法}
+设$\displaystyle\sum_{n=1}^\infty u_n$，$\displaystyle\sum_{n=1}^\infty v_n$均为正项级数.
+
+\textbf{1.比较审敛法}
+
+(1) 若$0\leq u_n\leq v_n$，$\displaystyle\sum_{n=1}^\infty v_n$收敛，则$\displaystyle\sum_{n=1}^\infty u_n$收敛；
+
+(2) 若$0\leq v_n\leq u_n$，$\displaystyle\sum_{n=1}^\infty v_n$发散，则$\displaystyle\sum_{n=1}^\infty u_n$发散.
+
+比较审敛法的极限形式 \quad 若$\displaystyle\lim_{n\rightarrow\infty}\frac{u_n}{v_n}=\lambda(0<\lambda<+\infty)$，则级数$\displaystyle\sum_{n=1}^\infty u_n$与$\displaystyle\sum_{n=1}^\infty v_n$具有相同的敛散性.
+
+\textbf{2.比值审敛法}
+
+\begin{equation*}
+    \lim_{n\rightarrow\infty}\frac{u_{n+1}}{u_n}=\rho
+    \begin{cases}
+        <1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{收敛}\\
+        >1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{发散}\\
+        =1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{敛散性不定}
+    \end{cases}
+\end{equation*}
+
+\textbf{3.根植审敛法}
+
+\begin{equation*}
+    \lim_{n\rightarrow\infty}\sqrt[n]{u_n}=\rho
+    \begin{cases}
+        <1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{收敛}\\
+        >1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{发散}\\
+        =1, \quad \mbox{则}\displaystyle\sum_{n=1}^\infty u_n\mbox{敛散性不定}
+    \end{cases}
+\end{equation*}
+
+\textbf{4.对数审敛法}
+
+(1) 若存在$\alpha>0$，使当$n\geq n_0$时，$\dfrac{\ln\dfrac{1}{u_n}}{\ln n}\geq 1+\alpha$，则正项级数$\displaystyle\sum_{n=1}^\infty u_n$收敛；
+
+(2) 若$n\geq n_0$时，$\dfrac{\ln\dfrac{1}{u_n}}{\ln n}\leq 1$，则正项级数$\displaystyle\sum_{n=1}^\infty u_n$发散.
+
+\textbf{5.两个重要级数的敛散性}
+
+等比级数：$\displaystyle\sum_{n=1}^\infty ar^n(a\neq0)$，当$|r|<1$时收敛，当$|r|\geq 1$时发散.
+
+$p$-级数：$\displaystyle\sum_{n=1}^\infty \frac{1}{n^p}$，当$p>1$时收敛，当$p\leq 1$时发散.
+
+\textbf{6.正项级数$\displaystyle\sum_{n=1}^\infty u_n$判断敛散性的一般步骤}
+
+(1) 考察$u_n\xrightarrow{?}0$，若$\displaystyle\lim_{n\rightarrow\infty}u_n\neq 0$，则级数发散；
+
+(2) 若$u_n\rightarrow0$，用比值法或根值法判定级数敛散性；
+
+(3) 若比值法或根值判别法均无效，则用比较判别法；
+
+(4) 若上述方法都行不通时，考虑$S_n$是否有极限
+
+从上述步骤可知，比值法或根值法是比较重要的判别法，也是比较易掌握的判别法
+
+\section{任意项级数的审敛法}
+
+\textbf{1.交错级数的莱布尼兹判别法}
+
+若$u_n>0,u_n\geq u_{n+1},\displaystyle\lim_{n\rightarrow\infty}u_n=0$，则交错级数$\displaystyle\sum_{n=1}^\infty(-1)^{n-1}u_n$收敛，其和$S<u_1$.
+
+\textbf{2.任意项级数 \quad 绝对收敛与条件收敛}
+
+若$\displaystyle\sum_{n=1}^\infty u_n$为任意项级数，且$\displaystyle\sum_{n=1}^\infty|u_n|$收敛，则$\displaystyle\sum_{n=1}^\infty u_n$收敛，并称$\displaystyle\sum_{n=1}^\infty u_n$为绝对收敛；若$\displaystyle\sum_{n=1}^\infty u_n$收敛，而$\displaystyle\sum_{n=1}^\infty|u_n|$发散，则称$\displaystyle\sum_{n=1}^\infty u_n$为条件收敛.
+
+\textbf{3.判定任意项级数$\displaystyle\sum_{n=1}^\infty u_n$的敛散性的主要方法}
+
+若$\displaystyle\sum_{n=1}^\infty |u_n|$收敛，则$\displaystyle\sum_{n=1}^\infty u_n$绝对收敛；若$\displaystyle\sum_{n=1}^\infty |u_n|$发散，则$\displaystyle\sum_{n=1}^\infty u_n$敛散性判别主要利用“莱布尼兹判别法”或$u_n\rightarrow0$或求$S_n$.
+
+\section{幂级数}
+\textbf{1.函数项级数的一般概念}
+
+(1)函数项级数的定义 \quad 设给定一个定义在区间$[a,b]$上的函数列
+\begin{equation*}
+    u_1(x),u_2(x),\cdots,u_n(x),\cdots,
+\end{equation*}
+则式子
+\begin{equation}
+    u_1(x)+u_2(x)+\cdots+u_n(x)+\cdots \label{function_series}
+\end{equation}
+叫做函数项级数
+
+(2)函数项级数的收敛域 \quad 对于区间$[a,b]$上的每一个值$x_0$，级数(\ref{function_series})成为常数项级数
+\begin{equation}
+    u_1(x_0)+u_2(x_0)+\cdots+u_n(x_0)+\cdots \label{func_const_series}
+\end{equation}
+如果(\ref{func_const_series})收敛，则称$x_0$是级数(\ref{function_series})的收敛点；如果(\ref{func_const_series})发散，则称$x_0$是级数(\ref{function_series})的发散点，(\ref{function_series})的所有收敛点的全体称为函数项级数(\ref{function_series})的收敛域.
+
+(3)函数项级数的和函数 \quad 对于收敛域内的任一点$x$，级数(\ref{function_series})都有一个确定的和
+\begin{equation*}
+    S(x)=\sum_{n=1}^\infty u_n(x)
+\end{equation*}
+$S(x)$是定义在收敛域上的函数，称为级数(\ref{function_series})的和函数.
+
+\textbf{2.幂级数及其收敛域}
+
+(1)幂级数的定义 \quad 形如
+\begin{equation*}
+    a_0+a_1(x-x_0)+a_2(x-x_0)^2+\cdots+a_n(x-x_0)^n+\cdots
+\end{equation*}
+或
+\begin{equation*}
+    a_0+a_1x+a_2x^2+\cdots+a_nx^n+\cdots
+\end{equation*}
+的级数称为幂级数.
+
+(2)阿贝尔(Abel)引理 \quad 若$x_0$是幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的收敛点，则对于一切满足$|x|<|x_0|$的点$x$，幂级数都绝对收敛；若$x_0$是幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的发散点，则对于一切满足$|x|>|x_0|$的点$x$，幂级数都发散.
+
+(3)幂级数的收敛半径 \quad 对任一幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$，必存在一个非负数$R$（$R$可为无穷大），使得对一切$|x|<R$的点$x$（当$R=0$时，$x=0$），幂级数都收敛；而对一切$|x|>R$的点$x$，幂级数都发散，$R$称为幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的收敛半径，$R$的求法如下：
+
+设幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$，若$\displaystyle\lim_{n\rightarrow\infty}\left|\dfrac{a_{n+1}}{a_n}\right|=\rho$，则幂级数的收敛半径
+\begin{equation*}
+    R=\begin{cases}
+        \dfrac{1}{\rho}, \quad 0<\rho<+\infty\\
+        +\infty, \quad \rho=0\\
+        0, \quad \rho=\infty
+    \end{cases}
+\end{equation*}
+
+(4)幂级数的收敛域 \quad 在幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的收敛区间$(-R,R)$上，加上收敛区间端点中的收敛点，就得到幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的收敛域。若$R$是不为零的有限数，则其收敛域为以下四种情形之一：
+\begin{equation*}
+    (-R,R), \quad [-R,R], \quad (-R,R], \quad [-R,R)
+\end{equation*}
+
+\textbf{3.幂级数的性质}
+
+若幂级数$\displaystyle\sum_{n=0}^\infty a_n x^n$的收敛半径为$R$，则有
+
+(1)和函数$S(x)$在$(-R,R)$内是连续的，若$\displaystyle\sum_{n=0}^\infty a_n x^n$在端点$x=R$（或$x=-R$）处收敛，则和函数在点$x=R$左连续（或在点$x=-R$右连续）.
+
+(2)幂函数可以逐项微分，即
+\begin{equation*}
+    S'(x)=\left(\sum_{n=0}^\infty a_nx^n\right)'=\sum_{n=0}^\infty \left(a_nx^n\right)'=\sum_{n=0}^\infty na_nx^{n-1}, \quad x\in(-R,R)
+\end{equation*}
+若逐项微分后得到的幂级数$\displaystyle\sum_{n=0}^\infty na_nx^{n-1}$在端点$x=R$（或$x=-R$）处收敛，则逐项微分以前的幂级数在点$x=R$（或$x=-R$）处也收敛.
+
+(3)幂级数可以逐项积分，即
+\begin{equation*}
+    \int_0^x S(x)\deriv x=\int_0^x \left(\sum_{n=0}^\infty a_nx^n\right)\deriv x=\sum_{n=0}^\infty \int_0^x a_nx^n\deriv x=\sum_{n=0}^\infty \dfrac{a_n}{n+1}x^{n+1}, \quad x\in(-R,R)
+\end{equation*}
+若幂级数$\displaystyle\sum_{n=0}^\infty a_nx^n$在端点$x=R$（或$x=-R$）处收敛，则积分上限$x$可取为$x=R$（或$x=-R$）.
+
+\textbf{4.幂级数的运算}
+
+设$\displaystyle\sum_{n=0}^\infty a_nx^n=f(x)$的收敛半径为$R_1$，$\displaystyle\sum_{n=0}^\infty b_nx^n=h(x)$的收敛半径为$R_2$，则对于这两个幂级数可以进行下列四则运算：
+\begin{equation*}
+    \left(\sum_{n=0}^\infty a_nx^n\right)\pm\left(\sum_{n=0}^\infty b_nx^n\right)=\sum_{n=0}^\infty (a_n\pm b_n)x^n=f(x)\pm h(x)
+\end{equation*}
+收敛半径 \quad $R=\min\{R_1,R_2\}$
+\begin{equation*}
+    \left(\sum_{n=0}^\infty a_nx^n\right)\left(\sum_{n=0}^\infty b_nx^n\right)=\sum_{n=0}(a_0b_n+a_1b_{n-1}+\cdots+a_nb_0)x^n=f(x)\cdot h(x)
+\end{equation*}
+收敛半径 \quad $R=\min\{R_1,R_2\}$
+\begin{equation*}
+    \dfrac{\displaystyle\sum_{n=0}^\infty a_nx^n}{\displaystyle\sum_{n=0}^\infty b_nx^n}=\sum_{n=0}^\infty c_nx^n, \quad (\mbox{其中}b_0\neq0)
+\end{equation*}
+
+系数$c_n$可由幂级数的乘法$\displaystyle\left(\sum_{n=0}^\infty b_nx^n\right)\left(\sum_{n=0}^\infty c_nx^n\right)=\sum_{n=0}^\infty a_nx^n$，并比较同次幂的系数得到。相除后得到的幂级数$\displaystyle\sum_{n=0}^\infty c_nx^n$的收敛区间可能比原来两个幂级数的收敛区间小得多.
+
+\section{函数展开成幂级数}
+\textbf{1.泰勒(Taylor)级数}
+
+当$f(x)$在$x_0$的某邻域内存在任意阶导数时，幂级数
+\begin{align*}
+    & \sum_{n=0}^\infty \dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n \\
+    = & f(x_0)+f'(x_0)(x-x_0)+\dfrac{f''(x_0)}{2!}(x-x_0)^2+\cdots+\dfrac{f^{(n)}(x_0)}{n!}(x-x_0)^n+\cdots
+\end{align*}
+称为$f(x)$在点$x_0$处的泰勒级数.
+
+当$x_0=0$时，泰勒级数为
+\begin{equation*}
+    \sum_{n=0}^\infty \dfrac{f^{(n)}(0)}{n!}x^n=f(0)+f'(0)x+\dfrac{f''(0)}{2!}x^2+\cdots+\dfrac{f^{(n)}(0)}{n!}x^n+\cdots
+\end{equation*}
+称为麦克劳林(Maclaurin)级数.
+
+\textbf{2.函数的幂级数展开式}
+
+函数展为幂级数有直接方法与间接方法两种（以下主要讨论函数$f(x)$在点$x=0$处展为幂级数的问题）.
+
+直接法 \quad 用直接法将函数展开为$x$的幂级数的步骤是
+
+(1)求出$f(x)$在$x=0$处各阶导数值$f^{(n)}(0),n=0,1,2,\cdots
+$
+
+(2)写出幂级数
+\begin{equation*}
+    \sum_{n=0}^\infty \dfrac{f^{(n)}(0)}{n!}x^n=f(0)+f'(0)x+\dfrac{f''(0)}{2!}x^2+\cdots+\dfrac{f^{(n)}(0)}{n!}x^n+\cdots
+\end{equation*}
+并求出收敛半径$R$.
+
+(3)在收敛区间$(-R,R)$内考察泰勒级数余项$R_n(x)$的极限
+\begin{equation*}
+    \lim_{n\rightarrow\infty}R_n(x)=\lim_{n\rightarrow\infty}\dfrac{f^{(n+1)}(\xi)}{(n+1)!}x^{n+1}\quad (\xi\mbox{介于}0\mbox{与}x\mbox{之间})
+\end{equation*}
+是否为零，如果为零，则第(2)步写出的幂级数就是$f(x)$的幂级数展开式.
+
+间接法 \quad 这种方法是利用已知的函数展开式，经过适当的四则运算、复合步骤以及逐项微分、逐项积分等把所给函数展为幂级数。常用的函数展开式有
+\begin{align*}
+    & \dfrac{1}{1-x}=1+x+x^2+\cdots+x^n+\cdots \quad (-1,1) \\
+    & e^x=1+x+\dfrac{x^2}{2!}+\cdots+\dfrac{x^n}{n!}+\cdots \quad (-\infty,\infty) \\
+    & \sin x=x-\dfrac{x^3}{3!}+\dfrac{x^5}{5!}-\cdots+(-1)^{n-1}\dfrac{x^{2n-1}}{(2n-1)!}+\cdots \quad (-\infty,\infty) \\
+    & \cos x=1-\dfrac{x^2}{2!}+\dfrac{x^4}{4!}-\cdots+(-1)^n\dfrac{x^{2n}}{(2n)!}+\cdots \quad (-\infty,\infty) \\
+    & \ln (1+x)=x-\dfrac{x^2}{2}+\dfrac{x^3}{3}-\cdots+(-1)^{n-1}\dfrac{x^n}{n}+\cdots \quad (-1,1] \\
+    & (1+x)^m=1+mx+\dfrac{m(m-1)}{2!}x^2+\cdots+\dfrac{m(m-1)\cdots(m-n+1)}{n!}x^n+\cdots \quad (-1,1)
+\end{align*}
+在最后一个式子中，当$x=\pm 1$时，级数是否收敛取决于$m$值.
+
+\section{傅立叶级数}
+\textbf{1.函数的傅立叶(Fourier)级数}
+
+设函数$f(x)$在区间$[-\pi,\pi]$（或$[0,2\pi]$）上可积，则称
+\begin{align*}
+    & a_n=\dfrac{1}{\pi}\int_{-\pi}^\pi f(x)\cos nx\deriv x, \quad n=0,1,2,\cdots \\
+    & b_n=\dfrac{1}{\pi}\int_{-\pi}^\pi f(x)\sin nx\deriv x, \quad n=1,2,3,\cdots
+\end{align*}
+为函数$f(x)$的傅立叶系数。由上述$a_n,b_n$所形成的三角级数
+\begin{equation*}
+    \dfrac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)
+\end{equation*}
+称为函数$f(x)$的傅立叶级数.
+
+\textbf{2.狄立克莱(Dirichlet)定理}
+
+设函数$f(x)$在区间$[-\pi,\pi]$（或$[0,2\pi]$）上满足条件：
+
+(1)连续或只有有限个第一类间断点；
+
+(2)至多只有有限个极值点.\\
+则$f(x)$的傅立叶级数
+\begin{equation*}
+    \dfrac{a_0}{2}+\sum_{n=1}^\infty(a_n\cos nx+b_n\sin nx)
+\end{equation*}
+在区间$[-\pi,\pi]$（或$[0,2\pi]$）上收敛，并且，若其和函数为$S(x)$，则有：
+
+(1)在$f(x)$的连续点处，$S(x)=f(x)$；
+\vspace{2mm}
+
+(2)在$f(x)$的间断点$x$处，$S(x)=\dfrac{f(x-0)+f(x+0)}{2}$.
+\vspace{2mm}
+
+(3)在端点$x=\pm\pi$处，$S(x)=\dfrac{f(-\pi+0)+f(\pi-0)}{2}$.\\\vspace{2mm}
+（或在$x=0,2\pi$处，$S(x)=\dfrac{f(0+0)+f(2\pi-0)}{2}$)，其中$f(x_0-0),f(x_0+0)$分别表示$f(x)$在$x_0$处的左、右极限
+
+\textbf{3.正弦级数}
+
+若$f(x)$是$(-\pi,\pi)$上的奇函数，则
+\begin{equation*}
+    f(x)=\sum_{n=1}^\infty b_n\sin nx
+\end{equation*}
+其中$b_n=\displaystyle\dfrac{2}{\pi}\int_{-\pi}^\pi f(x)\sin nx\deriv x, \quad n=1,2,\cdots$.
+
+\textbf{4.余弦级数}
+
+若$f(x)$是$(-\pi,\pi)$上的偶函数，则
+\begin{equation*}
+    f(x)=\dfrac{a_0}{2}+\sum_{n=1}^\infty a_n\cos nx
+\end{equation*}
+其中$a_n=\displaystyle\dfrac{2}{\pi}\int_{-\pi}^\pi f(x)\cos nx\deriv x, \quad n=0,1,2,\cdots$.
+
+\section{一般周期函数的傅立叶级数}
+\textbf{任意区间$[-l,l]$上的傅立叶级数}
+
+设函数$f(x)$在长为$2l$的区间$[-l,l]$（或$[0,2l]$）上满足狄立克莱定理条件，作变量置换$t=\dfrac{\pi x}{l}$，则函数$f(x)=f(\dfrac{l}{\pi}t)=\varphi(t)$，而$\varphi(t)$在区间$[-\pi,\pi]$上满足狄立克莱定理条件，所以$f(x)$在$[-l,l]$上的傅立叶级数$\dfrac{a_0}{2}+\displaystyle\sum_{n=1}^\infty(a_n\cos\dfrac{n\pi}{l}x+b_n\sin\dfrac{n\pi}{l}x)$收敛，并且，若其和函数为$S(x)$，则有
+
+(1)在$f(x)$的连续点处，$S(x)=f(x)$；
+\vspace{2mm}
+
+(2)在$f(x)$的间断点$x$处，$S(x)=\dfrac{f(x-0)+f(x+0)}{2}$.
+\vspace{2mm}
+
+(3)在端点$x=\pm l$处，$S(x)=\dfrac{f(-l+0)+f(l-0)}{2}$\\\vspace{2mm}
+（或在$x=0,2l$处，$S(x)=\dfrac{f(0+0)+f(2l-0)}{2}$）
+
+其中
+\begin{align*}
+    & a_n=\dfrac{1}{l}\int_{-l}^l f(x)\cos\dfrac{n\pi}{l}x\deriv x, \quad n=0,1,2,\cdots \\
+    & b_n=\dfrac{1}{l}\int_{-l}^l f(x)\sin\dfrac{n\pi}{l}x\deriv x, \quad n=1,2,3,\cdots
+\end{align*}
+
+可见，任意区间$[-l,l]$上的傅立叶级数是区间$[-\pi,\pi]$上的傅立叶级数的推广，而区间$[-\pi,\pi]$上的傅立叶级数是区间$[-l,l]$上的傅立叶级数的特殊情况.

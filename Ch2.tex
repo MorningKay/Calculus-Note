@@ -1,0 +1,205 @@
+\setcounter{chapter}{1}
+
+\chapter{导数与微分}
+
+\begin{introduction}
+    \item 导数定义\ref{def:the_definition_derivative}
+    \item 导数公式
+    \item 高阶导数
+    \item 隐函数及参数方程导数
+    \item 微分\ref{def:the_definition_differential}
+    \item 微分公式
+\end{introduction}
+
+\section{导数的概念}
+
+\begin{definition}[导数定义] \label{def:the_definition_derivative}
+设函数$y=f(x)$在$x_0$点的某邻域内有定义，当自变量$x$在$x_0$点处取得增量$\Delta x(\Delta x\neq 0)$时，相应地，函数$y$取得增量$\Delta y = f(x_0+\Delta x)-f(x_0)$，如果极限
+\begin{equation}
+    \lim_{\Delta x\rightarrow 0}\dfrac{\Delta y}{\Delta x} = \lim_{\Delta x\rightarrow 0} \dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}
+    \nonumber
+\end{equation}
+
+存在，则成函数$y=f(x)$在$x_0$点可导，并称这个极限值为函数$y=f(x)$在$x_0$点处的导数，记为
+\vspace{1mm}
+
+$f^{'}(x_0),y^{'}(x_0),\dfrac{\deriv y}{\deriv x}\bigg|_{x=x_0}$
+\vspace{1mm}
+
+如果记$x=x_0+\Delta x$，则导数又可表示为
+\begin{equation}
+    f'(x_0) = \lim_{x\rightarrow x_0}\dfrac{f(x)-f(x_0)}{x-x_0}
+    \nonumber
+\end{equation}
+
+若极限$\displaystyle\lim_{\Delta x\rightarrow0^-}\dfrac{\Delta y}{\Delta x} = \lim_{\Delta x\rightarrow0^-}\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$存在，则该极限值称为$f(x)$在$x_0$点的左导数，记作
+\begin{equation}
+    f_{-}'(x_0), \quad \mbox{或} \quad f_{-}'(x_0)=\lim_{x\rightarrow x_0^-}\dfrac{f(x)-f(x_0)}{x-x_0}
+    \nonumber
+\end{equation}
+
+若极限$\displaystyle\lim_{\Delta x\rightarrow 0^+}\dfrac{\Delta y}{\Delta x}=\lim_{\Delta x\rightarrow0^+}\dfrac{f(x_0+\Delta x)-f(x_0)}{\Delta x}$存在，则该极限值称为$f(x)$在$x_0$点的右导数，记作
+\begin{equation}
+    f_{+}'(x_0), \quad \mbox{或} \quad f_{+}'(x_0)=\lim_{x\rightarrow x_0^+}\dfrac{f(x)-f(x_0)}{x-x_0}
+    \nonumber
+\end{equation}
+
+函数$f(x)$在$x_0$点可导，且导数为$A$的充要条件是
+\begin{equation}
+    f'(x_0)=f_{-}'(x_0)=f_{+}'(x_0)=A 
+    \nonumber
+\end{equation}
+\end{definition}
+
+\textbf{导数的几何意义} \quad 导数$f^{'}(x_0)$在几何上表示曲线$y=f(x)$在$M(x_0,f(x_0))$点处的切线斜率
+
+曲线$y=f(x)$在点$M$的切线方程是
+\begin{equation}
+    y=f'(x_0)(x-x_0)+f(x_0)
+    \nonumber
+\end{equation}
+
+曲线$y=f(x)$在点$M$的法线方程是
+\begin{equation}
+    y=-\dfrac{1}{f'(x_0)}(x-x_0)+f(x_0) \quad (\mbox{当}f'(x_0)\neq0\mbox{时})
+    \nonumber
+\end{equation}
+
+\textbf{函数的可导性与连续性} \quad 若函数$y=f(x)$在$x_0$点可导，则$y=f(x)$在$x_0$点必连续，但连续不一定可导。
+
+\section{导数的基本公式与运算法则}
+\textbf{1.基本初等函数的导数公式}
+\begin{alignat}{2}
+&(1)(c)'=0   &&(2)(x^\mu)'=\mu x^{\mu-1} \quad (\mu\mbox{为实数}) \nonumber \\
+&(3)(\sin x)'=\cos x  &&(4)(\cos x)'=-\sin x \nonumber\\
+&(5)(\tan x)'=\sec^2 x   &&(6)(\cot x)'=-\csc^2 x \nonumber \\
+&(7)(\sec x)'=\sec x\cdot \tan x &&(8)(\csc x)'=-\csc x\cdot\cot x \nonumber \\
+&(9)(a^x)'=a^x\ln a \quad (a>0, a\neq1) &&(10)(e^x)'=e^x \nonumber \\
+&(11)(\log_a x)'=\dfrac{1}{x\ln a} \quad (a>0, a\neq1) \qquad \qquad &&(12)(\ln x)'=\dfrac{1}{x} \nonumber \\
+&(13)(\arcsin x)'=\dfrac{1}{\sqrt{1-x^2}} &&(14)(\arccos x)'=-\dfrac{1}{\sqrt{1-x^2}} \nonumber \\
+&(15)(\arctan x)'=\dfrac{1}{1+x^2} && (16)(\arccot x)'=-\dfrac{1}{1+x^2} \nonumber \\
+&(17)\left[\ln\left(x+\sqrt{x^2+1}\right)\right]'=\dfrac{1}{\sqrt{x^2+1}} &&(18)\left[\ln\left(x+\sqrt{x^2-1}\right)\right]'=\dfrac{1}{\sqrt{x^2-1}} \nonumber
+\end{alignat}
+
+\textbf{2.导数的四则运算法则} \quad 设函数$u(x),v(x)$在$x$点可导，则
+\vspace{1mm}
+
+(1)$\left[ u(x)\pm v(x) \right]' = u'(x)\pm v'(x)$ 
+\vspace{1mm}
+
+(2)$\left[ u(x) \cdot v(x) \right]' = u'(x)v(x)+u(x)v'(x)$
+\vspace{2mm}
+
+(3)$\left[\dfrac{u(x)}{v(x)}\right]'=\dfrac{u'(x)v(x)-u(x)v'(x)}{[v(x)]^2}, \quad (v(x)\neq0)$
+\vspace{1mm}
+
+\textbf{3.复合函数的求导法则} \quad 若$u=\varphi(x)$在$x$点可导，而$y=f(u)$在对应点$u(u=\varphi(x))$可导，则复合函数$y=f[\varphi(x)]$在$x$点可导，且
+\begin{equation}
+    y'=f'(u)\cdot\varphi'(x)
+    \nonumber
+\end{equation}
+
+\textbf{4.反函数求导法则及其二阶导} \quad 在$y=f(x)$单调，且二阶可导的情况下，若$f'(x)\neq0$，则存在反函数$x=\varphi(y)$，记$f'(x)=y_x',\varphi'(x)=x_y'$，则有
+\begin{equation}
+    y_x'=\dfrac{\deriv y}{\deriv x}=\dfrac{1}{\dfrac{\deriv x}{\deriv y}}=\dfrac{1}{x_y'}, \quad y_{xx}''=\dfrac{\deriv^y}{\deriv x^2}=\dfrac{\deriv\left(\dfrac{\deriv y}{\deriv x}\right)}{\deriv x}=\dfrac{\deriv\left( \dfrac{1}{x_y'} \right)}{\deriv x}=\dfrac{\deriv\left( \dfrac{1}{x_y'} \right)}{\deriv y}\cdot\dfrac{1}{x_y'}=\dfrac{-x_{yy}''}{(x_y')^3}
+    \nonumber
+\end{equation}
+
+反过来，则有
+\begin{equation}
+    x_y'=\dfrac{1}{y_x'},\quad x_{yy}''=\dfrac{-y_{xx}''}{(y_x')^3}
+    \nonumber
+\end{equation}
+
+\section{高阶导数 \quad 隐函数及参数方程求导}
+\textbf{1.高阶导数} \quad 函数$y=f(x)$的导数的导数，即$(y')'$，称为$f(x)$的二阶导数，记为$y''=f''(x)$；一般$y=f(x)$的$(n-1)$阶导数的导数称为$f(x)$的$n$阶导数，记为$y^{(n)}=f^{(n)}(x)$。二阶及二阶以上的导数称为高阶导数。
+
+设函数$u=u(x),v=v(x)$具有$n$阶导数，则
+\begin{equation}
+    \begin{aligned}
+        & [u\pm v]^{(n)}=u^{(n)}\pm v^{(n)} \\
+        & [ku]^{(n)}=ku^{(n)} \\
+        & [uv]^{(n)}=\sum_{k=0}^n \binom{n}{k} u^{(n-k)} v^{(k)} \\
+        & \qquad \ \ \ =u^{(n)}v+nu^{(n-1)}v'+\dfrac{n(n-1)}{2!}u^{(n-2)}v''+\cdots+nu'v^{(n-1)}+uv^{(n)}
+    \end{aligned}
+    \nonumber
+\end{equation}
+
+称为莱布尼茨$n$阶导数公式。
+
+常见函数的高阶导数：
+\begin{equation}
+    \begin{aligned}
+        &(e^x)^{(n)}=e^x \\
+        &(\sin x)^{(n)} = \sin\left( x+n\cdot\dfrac{\pi}{2} \right) \\
+        &(\cos x)^{(n)} = \cos\left( x+n\cdot\dfrac{\pi}{2} \right) \\
+        &[\ln(1+x)]^{(n)}=(-1)^{(n-1)}\dfrac{(n-1)!}{(1+x)^n} \\
+        &(x^\mu)^{(n)}=\mu(\mu-1)\cdots(\mu-n+1)x^{(\mu-n)} \quad (\mu\mbox{是任意常数)，特别地，有} (x^n)^{(n+1)}=0
+    \end{aligned}
+    \nonumber
+\end{equation}
+
+\textbf{2.隐函数的导数} \quad 求由方程$F(x,y)=0$所确定的隐函数$y=y(x)$的导数$y'(x)$，可将方程$F(x,y)=0$两端对$x$求导，并注意$y$是$x$的函数，最后解出$y'(x)$。
+
+\textbf{3.参数方程确定的函数的导数} \quad 设$\left\{\begin{aligned}x=\varphi(t) \\ y=\psi(t) \end{aligned}\right.$确定了$y$是$x$的函数，$t$为参数，则$\dfrac{\deriv y}{\deriv x}=\dfrac{\deriv y/\deriv t}{\deriv x/\deriv t}=\dfrac{\psi'(t)}{\varphi'(t)}$
+\vspace{2mm}
+
+\textbf{参数方程的二阶导数} \quad 设$\varphi(t),\psi(t)$均二阶可导，$\varphi'(t)\neq0$，则
+\begin{equation}
+    \dfrac{\deriv^y}{\deriv x^2}=\dfrac{\deriv\left(\dfrac{\deriv y}{\deriv x}\right)}{\deriv x}=\dfrac{\deriv\left(\dfrac{\deriv y}{\deriv x}\right)/\deriv t}{\deriv x/\deriv t}=\dfrac{\psi''(t)\varphi'(t)-\psi'(t)\varphi''(t)}{[\varphi'(t)]^3}
+    \nonumber
+\end{equation}
+
+\section{微分}
+\begin{definition}[微分定义] \label{def:the_definition_differential}
+    若函数$f(x)$在$x$点的增量$\Delta y=f(x+\Delta x)-f(x)$，可表示为$\Delta y=A\Delta x+o(\Delta x)$，其中：$A$是与$\Delta x$无关的量；当$\Delta x\rightarrow0$时，$o(\Delta x)$是比$\Delta x$高阶的无穷小。则称$y=f(x)$在$x$点可微，而线性主部$A\Delta x$称为$y=f(x)$在$x$点的微分，记为$\deriv y$或$\deriv f(x)$，即$\deriv y=\deriv f(x)=A\Delta x$。
+
+    当函数$f(x)$可微时，微分中$\Delta x$的系数$A=f'(x)$，记$\deriv x=\Delta x$，称之为自变量的微分，微分表达式通常写为对称形式
+    \begin{equation}
+        \deriv y=f'(x)\deriv x
+        \nonumber
+    \end{equation}
+
+    而导数就是函数微分与自变量微分之商（微商）
+    \begin{equation}
+        f'(x)=\dfrac{\deriv y}{\deriv x}
+        \nonumber
+    \end{equation}
+\end{definition}
+
+\textbf{1.基本初等函数的微分公式}
+\begin{alignat}{2}
+&(1)\deriv(c)=0   &&(2)\deriv(x^\mu)=\mu x^{\mu-1}\deriv x \quad (\mu\mbox{为实数}) \nonumber \\
+&(3)\deriv(\sin x)=\cos x \deriv x &&(4)\deriv(\cos x)=-\sin x \deriv x\nonumber\\
+&(5)\deriv(\tan x)=\sec^2 x \deriv x  &&(6)\deriv(\cot x)=-\csc^2 x \deriv x\nonumber \\
+&(7)\deriv(\sec x)=\sec x\cdot \tan x \deriv x &&(8)\deriv(\csc x)=-\csc x\cdot\cot x \deriv x\nonumber \\
+&(9)\deriv(a^x)=a^x\ln a \deriv x\quad (a>0, a\neq1) &&(10)\deriv(e^x)=e^x \deriv x\nonumber \\
+&(11)\deriv(\log_a x)=\dfrac{1}{x\ln a} \deriv x\quad (a>0, a\neq1) \qquad \qquad &&(12)\deriv(\ln x)=\dfrac{1}{x} \deriv x\nonumber \\
+&(13)\deriv(\arcsin x)=\dfrac{1}{\sqrt{1-x^2}} \deriv x &&(14)\deriv(\arccos x)=-\dfrac{1}{\sqrt{1-x^2}} \deriv x\nonumber \\
+&(15)\deriv (\arctan x)=\dfrac{1}{1+x^2} \deriv x&& (16)\deriv(\arccot x)=-\dfrac{1}{1+x^2} \deriv x\nonumber \\
+&(17)\deriv \! \left[\ln\left(x+\sqrt{x^2+1}\right)\right]=\dfrac{1}{\sqrt{x^2+1}} \deriv x &&(18)\deriv \! \left[\ln\left(x+\sqrt{x^2-1}\right)\right]=\dfrac{1}{\sqrt{x^2-1}} \deriv x\nonumber
+\end{alignat}
+
+\textbf{2.微分四则运算法则} \quad 设函数$u(x),v(x)$在$x$点可微，则
+\vspace{1mm}
+
+(1) \ $\deriv \! \left[ u(x)\pm v(x) \right] = \deriv u(x)\pm \deriv v(x)$ 
+\vspace{1mm}
+
+(2) \ $\deriv \! \left[ u(x) \cdot v(x) \right] = v(x)\deriv u(x)+u(x)\deriv v(x)$
+\vspace{2mm}
+
+(3) \ $\deriv \! \left[\dfrac{u(x)}{v(x)}\right]=\dfrac{ v(x)\deriv u(x)-u(x)\deriv v(x)}{[v(x)]^2}, \quad (v(x)\neq0)$
+\vspace{2mm}
+
+\textbf{3.微分的形式不变性} \quad 若$u=\varphi(x)$在$x$点可微，而$y=f(u)$在对应点$u(u=\varphi(x))$可微，则复合函数$y=f[\varphi(x)]$在$x$点可微，且微分式
+\begin{equation}
+    \deriv y=f'[\varphi(x)]\cdot\varphi'(x)\deriv x =f'(u)\deriv u
+    \nonumber
+\end{equation}
+
+这表明，不论$u$是自变量或中间变量，函数$y=f(u)$的微分形式都是一样的，这个性质称为一阶微分形式的不变性。
+
+\textbf{4.可微的充要条件} \quad 函数$f(x)$在$x_0$点可微的充分必要条件是$f(x)$在$x_0$点可导，且$\deriv y=f'(x_0)\deriv x$。
+
+\textbf{5.可微的必要条件} \quad 函数$f(x)$在$x_0$点可微的必要条件是$f(x)$在$x_0$点连续.

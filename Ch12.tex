@@ -1,0 +1,361 @@
+\setcounter{chapter}{11}
+
+\chapter{常微分方程}
+
+\begin{introduction}
+    \item 可分离变量的微分方程
+    \item 齐次微分方程
+    \item 一阶线性微分方程
+    \item 二阶常系数微分方程
+\end{introduction}
+
+\section{微分方程的基本概念}
+含有未知函数的导数或微分的方程称为微分方程
+
+微分方程分两类：常微分方程和偏微分方程。若未知函数为多元函数，微分方程中出现偏导数，这样的微分方程成为偏微分方程。而未知函数为一元函数的微分方程成为常微分方程，本章只限于研究常微分方程，简称微分方程，有时候也简称为方程。
+
+微分方程中未知函数的最高阶导数的阶数称为这个方程的阶。
+
+$n$阶常微分方程的一般形式为：
+\begin{equation*}
+    F(x,y,y',y'',\cdots,y^{(n)})=0
+\end{equation*}
+
+若将函数$y=y(x)$代入微分方程后，能使方程成为恒等式，则称函数$y=y(x)$为微分方程的解。
+
+若微分方程的解中所含独立任意常数的与此微分方程的阶数相等，则称这个解为微分方程的通解。
+
+确定通解中任意常数的条件称为定解条件。
+
+满足定解条件的解成为微分方程的特解。
+
+\section{可分离变量的微分方程}
+形如
+\begin{equation*}
+    f_1(x)g_1(y)\deriv x+f_2(x)g_2(y)\deriv y=0
+\end{equation*}
+的一阶微分方程称为可分离变量的微分方程。将方程两端除以$g_1(y)f_2(x)$（此时$g_1(y)f_2(x)\neq0$），得
+\begin{equation*}
+    \dfrac{f_1(x)}{f_2(x)}\deriv x+\dfrac{g_1(y)}{g_2(y)}\deriv y=0
+\end{equation*}
+然后对上式两端积分，即可得方程的通解
+\begin{equation*}
+    \int\dfrac{f_1(x)}{f_2(x)}\deriv x+\int\dfrac{g_1(y)}{g_2(y)}\deriv y=C
+\end{equation*}
+
+\section{齐次微分方程}
+\textbf{1.齐次方程}
+
+形如
+\begin{equation*}
+    \dfrac{\deriv y}{\deriv x}=f\left(\dfrac{y}{x}\right)
+\end{equation*}
+的一阶微分方程称为齐次方程.
+
+令$u=\dfrac{y}{x}$，或$y=x\cdot u$，则$\dfrac{\deriv y}{\deriv x}=u+x\dfrac{\deriv u}{\deriv x}$，代入原方程得
+\begin{equation*}
+    u+x\dfrac{\deriv u}{\deriv x}=f(u)
+\end{equation*}
+即
+\begin{equation*}
+    \dfrac{\deriv u}{f(u)-u}=\dfrac{1}{x}\deriv x
+\end{equation*}
+这是变量已分离的微分方程，经积分即可得方程的通解.
+
+\textbf{2.可化为齐次方程的微分方程}
+
+形如方程
+\begin{equation*}
+    \dfrac{\deriv y}{\deriv x}=f\left(\dfrac{a_1x+b_1y+c_1}{a_2x+b_2y+c_2}\right)
+\end{equation*}
+其中$a_1,b_1,c_1,a_2,b_2,c_2$为常数，且$c_1^2+c_2^2\neq0$。当$\begin{vmatrix}
+    a_1 & b_1 \\
+    a_2 & b_2
+\end{vmatrix}\neq0$时，令$x=X+h,y=Y+k$，由
+\begin{equation*}
+    \begin{cases}
+        a_1h+b_1k+c_1=0 \\
+        a_2h+b_2k+c_2=0
+    \end{cases}
+\end{equation*}
+解出$h$与$k$，可将原方程化为齐次方程
+\begin{equation*}
+    \dfrac{\deriv Y}{\deriv X}=f\left(\dfrac{a_1X+b_1Y}{a_2X+b_2Y}\right)=f\left[\dfrac{a_1+b_1\dfrac{Y}{X}}{a_2+b_2\dfrac{Y}{X}}\right]=g\left(\dfrac{Y}{X}\right)
+\end{equation*}
+当$\begin{vmatrix}
+    a_1 & b_1 \\
+    a_2 & b_2
+\end{vmatrix}=0$时，即$\dfrac{a_1}{a_2}=\dfrac{b_1}{b_2}=k$，可设$u=a_2x+b_2y$，代入原方程后可化为可分离变量的微分方程，即有
+\begin{equation*}
+    \dfrac{\deriv y}{\deriv x}=f\left(\dfrac{ku+c_1}{u+c_2}\right)=g(u), \quad \dfrac{\deriv u}{\deriv x}=a_2+b_2g(u)
+\end{equation*}
+
+\section{一阶线性微分方程}
+\textbf{1.一阶线性微分方程}
+
+形如
+\begin{equation*}
+    \dfrac{\deriv y}{\deriv x}+P(x)y=Q(x)
+\end{equation*}
+的一阶微分方程称为一阶线性微分方程.
+
+\vspace{2mm}
+(1)$\dfrac{\deriv y}{\deriv x}+P(x)y=0$称为一阶齐次线性微分方程，直接积分，可得其通解
+\begin{equation*}
+    y=Ce^{-\int P(x)\deriv x}
+\end{equation*}
+
+(2)$\dfrac{\deriv y}{\deriv x}+P(x)y=Q(x)$称为一阶非齐次线性微分方程，用常数变易法，可得其通解
+\begin{equation*}
+    y=e^{-\int P(x)\deriv x}\left[\int Q(x)e^{\int P(x)\deriv x}\deriv x+C\right]
+\end{equation*}
+
+\begin{note}
+    这里补充一个求解一阶非齐次线性微分方程的方法：
+
+    我们现在要求方程
+    \begin{equation}
+        \dfrac{\deriv y}{\deriv x}+P(x)y=Q(x) \label{linear_equation}
+    \end{equation}
+
+    设一个函数（积分因子）$I(x)$，将$I(x)$乘到公式(\ref{linear_equation})的左边，以便于将其凑成$I(x)y$的导数的形式
+    \begin{equation}
+        I(x)(y'+P(x)y)=(I(x)y)' \label{integrating_factor}
+    \end{equation}
+
+    如果我们可以找到这样的一个函数$I$，那么公式(\ref{linear_equation})就可以变为
+    \begin{equation*}
+        (I(x)y)'=I(x)Q(x)
+    \end{equation*}
+
+    然后两边对$x$积分，即可得到
+    \begin{equation*}
+        I(x)y=\int I(x)Q(x)\deriv x+C
+    \end{equation*}
+
+    由此我们可得到解为
+    \begin{equation}
+        y(x)=\dfrac{1}{I(x)}\left[\int I(x)Q(x)\deriv x+C\right] \label{solution}
+    \end{equation}
+
+    为了去找到这样的一个函数$I$，我们再对公式(\ref{integrating_factor})变形
+    \begin{align*}
+        I(x)y'+I(x)P(x)y=(I(x)y)'=I'(x)y+I(x)y' \\
+        I(x)P(x)=I'(x)
+    \end{align*}
+
+    把$I$分离出来，可得到一个新的微分方程，然后我们可解得
+    \begin{align*}
+        \int\dfrac{\deriv I}{I}=\int P(x)\deriv x \\
+        \ln |I|=\int P(x)\deriv x \\
+        I=Ae^{\int P(x)\deriv x}
+    \end{align*}
+
+    其中$A=\pm e^C$是一个常数，我们只需要寻找一个特定的积分因子，不需要找到通解。所以我们令$A=1$，得到
+    \begin{equation*}
+        I(x)=e^{\int P(x)\deriv x}
+    \end{equation*}
+
+    将$I$代入公式(\ref{solution})，即可得到一阶非齐次线性微分方程的通解
+\end{note}
+
+\textbf{2.贝努里(Bernoulli)方程}
+
+一阶微分方程$\dfrac{\deriv y}{\deriv x}+P(x)y=Q(x)y^n(n\neq0,1)$称为贝努里方程，用变量代换$z=y^{1-n}$，可化为$z$的一阶线性方程
+\begin{equation*}
+    \dfrac{\deriv z}{\deriv x}+(1-n)P(x)z=(1-n)Q(x)
+\end{equation*}
+
+\section{全微分方程}
+\textbf{1.全微分方程}
+
+若方程
+\begin{equation}
+    P(x,y)\deriv x+Q(x,y)\deriv y=0 \label{total_equation}
+\end{equation}
+的左端恰好是某一个二元函数$u(x,y)$的全微分，即：
+\begin{equation*}
+    \deriv u=P(x,y)\deriv x+Q(x,y)\deriv y=\dfrac{\partial u}{\partial x}\deriv x+\dfrac{\partial u}{\partial y}\deriv y
+\end{equation*}
+则称方程(\ref{total_equation})为全微分方程（或称为恰当方程），全微分方程通解是$u(x,y)=C$（$C$是任意常数），$u(x,y)$也称为$P\deriv x+Q\deriv y$的原函数.
+
+\textbf{2.方程(\ref{total_equation})为全微分方程的充要条件及原函数$u(x,y)$的求法}
+
+若$P(x,y),Q(x,y)$在某一单连通域上连续，且有连续的一阶偏导数，则方程(\ref{total_equation})为全微分方程的充要条件是$\dfrac{\partial P}{\partial y}=\dfrac{\partial Q}{\partial x}$，这时有
+\begin{equation*}
+    u(x,y)=\int_{x_0}^x P(x,y_0)\deriv x+\int_{y_0}^y Q(x,y)\deriv y+C
+\end{equation*}
+或
+\begin{equation*}
+    u(x,y)=\int_{x_0}^x P(x,y)\deriv x+\int_{y_0}^y Q(x_0,y)\deriv y+C
+\end{equation*}
+
+\textbf{3.积分因子}
+
+若方程(\ref{total_equation})不是全微分方程，但存在一个函数$\mu(x,y)$使
+\begin{equation*}
+    \mu(x,y)P(x,y)\deriv x+\mu(x,y)Q(x,y)\deriv y=0
+\end{equation*}
+为全微分方程，则称$\mu(x,y)$为方程(\ref{total_equation})的积分因子.
+
+\textbf{4.某些已知的二元函数的全微分公式}
+\begin{align*}
+    & x\deriv y+y\deriv x=\deriv(xy) && \dfrac{x\deriv y-y\deriv x}{x^2}=\deriv\left(\dfrac{y}{x}\right) \\
+    & \dfrac{-x\deriv y+y\deriv x}{y^2}=\deriv\left(\dfrac{x}{y}\right) && \dfrac{x\deriv x+y\deriv y}{\sqrt{x^2+y^2}}=\deriv(\sqrt{x^2+y^2}) \\
+    & \dfrac{-x\deriv y+y\deriv x}{xy}=\deriv\left(\ln\dfrac{x}{y}\right) && \dfrac{x\deriv y-y\deriv x}{x^2+y^2}=\deriv\left(\arctan\dfrac{y}{x}\right) \\
+    & \dfrac{y\deriv x-x\deriv y}{x^2+y^2}=\deriv\left(\arctan\dfrac{x}{y}\right) && \dfrac{x\deriv x+y\deriv y}{x^2+y^2}=\dfrac{1}{2}\deriv\ln(x^2+y^2) \\
+    & \dfrac{x\deriv y-y\deriv x}{y^2-x^2}=\deriv\ln\sqrt{\dfrac{y-x}{y+x}}
+\end{align*}
+
+\section{可降阶的高阶微分方程}
+\textbf{1.$y^{(n)}=f(x)$}
+
+方程特点是右端为自变量$x$的函数，且不含有函数$y$及其导数$y',y'',\cdots,y^{(n-1)}$，将方程两边对$x$逐次积分即得其通解
+\begin{equation*}
+    y=\int\deriv x\cdots\int f(x)\deriv x+\dfrac{C_1}{(n-1)!}x^{n-1}+\dfrac{C_2}{(n-2)!}x^{n-2}+\cdots+C_{n-1}x+C_n
+\end{equation*}
+
+\textbf{2.$y''=f(x,y')$}
+
+方程特点是右端不显含函数$y$，令$y'=p,y''=\dfrac{\deriv p}{\deriv x}=p'$，代入原方程即可化为一阶方程$p'=f(x,p)$，若其解为$p=\varphi(x,C_1)$，则原方程的通解为
+\begin{equation*}
+    y=\int\varphi(x,C_1)\deriv x+C_2
+\end{equation*}
+
+\textbf{3.$y''=f(y,y')$}
+
+方程特点是右端不显含自变量$x$，令$y'=p$，并利用复合函数的求导法则，把$y''$化为对$y$的导数，即
+\begin{equation*}
+    y''=\dfrac{\deriv p}{\deriv x}=\dfrac{\deriv p}{\deriv y}\cdot\dfrac{\deriv y}{\deriv x}=p\cdot\dfrac{\deriv p}{\deriv y}
+\end{equation*}
+代入原方程即可化为一阶方程
+\begin{equation*}
+    p\cdot\dfrac{\deriv p}{\deriv y}=f(y,p)
+\end{equation*}
+其解为$p=\varphi(y,C_1)$，即$\dfrac{\deriv y}{\deriv x}=\varphi(y,C_1)$，则原方程的通解为
+\begin{equation*}
+    \int\dfrac{\deriv y}{\varphi(y,C_1)}=x+C_2
+\end{equation*}
+
+\section{高阶线性微分方程解的结构}
+$n$阶线性微分方程的一般形式为
+\begin{equation}
+    y^{(n)}+P_1(x)y^{(n-1)}+P_2(x)y^{(n-2)}+\cdots+P_{n-1}(x)y'+P_n(x)y=f(x) \label{n_th_order_linear_diff_equation}
+\end{equation}
+其中$n\geq2$，$P_1(x),P_2(x),\cdots,P_n(x),f(x)$为已知连续函数.
+
+当$f(x)\equiv0$时，方程(\ref{n_th_order_linear_diff_equation})称为$n$阶线性齐次微分方程；当$f(x)\neq0$时，方程(\ref{n_th_order_linear_diff_equation})称为$n$阶线性非齐次微分方程.
+
+现以二阶线性微分方程
+\begin{align}
+    & y''+P(x)y'+Q(x)y=0 \label{second_linear_diff_equation} \\
+    & y''+P(x)y'+Q(x)y=f(x) \label{second_linear_diff_equation_nz}
+\end{align}
+为例，讨论其解的性质及其解法。这些性质及解法均可推广到任意高阶的线性微分方程.
+
+(1)若函数$y_1(x),y_2(x)$是线性齐次方程(\ref{second_linear_diff_equation})的两个解，则$y=C_1y_1+C_2y_2$也是方程(\ref{second_linear_diff_equation})的解，其中$C_1,C_2$为任意常数.
+
+(2)若$y_1(x),y_2(x)$是方程(\ref{second_linear_diff_equation})的两个线性无关的解，则$C_1y_1(x)+C_2y_2(x)$是方程(\ref{second_linear_diff_equation})的通解，其中$C_1,C_2$为任意常数.
+
+(3)设$y^*$是线性非齐次方程(\ref{second_linear_diff_equation_nz})的一个特解，$Y=C_1y_1(x)+C_2y_2(x)$是对应的齐次方程(\ref{second_linear_diff_equation})的通解，则$y=Y+y^*$是非齐次方程(\ref{second_linear_diff_equation_nz})的通解.
+
+(4)设线性非齐次方程(\ref{second_linear_diff_equation_nz})的右端$f(x)$是两个函数之和，如
+\begin{equation*}
+    y''+P(x)y'+Q(x)y=f_1(x)+f_2(x)
+\end{equation*}
+而$y_1(x)$与$y_2(x)$分别是方程$y''+P(x)y'+Q(x)y=f_1(x)$和$y''+P(x)y'+Q(x)y=f_2(x)$的解，则$y_1(x)+y_2(x)$是方程$y''+P(x)y'+Q(x)y=f_1(x)+f_2(x)$的解.
+
+\section{常系数齐次线性微分方程}
+\textbf{1.二阶常系数齐次线性微分方程的通解}
+
+设
+\begin{equation}
+    y''+py'+qy=0 \label{second_order_constant_coefficient_linear_diff_equation}
+\end{equation}
+
+(1)特征方程有两个相异根$r_1\neq r_2$，则方程(\ref{second_order_constant_coefficient_linear_diff_equation})的通解为$Y=C_1e^{r_1x}+C_2e^{r_2x}$；
+
+(2)特征方程有两个相等实根$r_1=r_2=r$，则方程(\ref{second_order_constant_coefficient_linear_diff_equation})的通解为$Y=(C_1+C_2x)e^{rx}$；
+
+(3)特征方程有一对共轭复根$r_{1,2}=\alpha\pm i\beta$，则方程(\ref{second_order_constant_coefficient_linear_diff_equation})的通解为$Y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)$.
+
+\textbf{2.$n$阶常系数线性齐次微分方程}
+
+设$n$阶常系数线性齐次微分方程是
+\begin{equation}
+    y^{(n)}+p_1(x)y^{(n-1)}+p_2y^{(n-2)}\cdots+p_{n-1}y'+p_ny=0
+    \label{nth_order_constant_coefficient_linear_diff_equation}
+\end{equation}
+其中$p_1,p_2,\cdots,p_n$是常数，代数方程
+\begin{equation*}
+    r^n+p_1r^{n-1}+p_2r^{n-2}+\cdots+p_{n-1}r+p_n=0
+\end{equation*}
+成为微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的特征方程，特征方程的根叫作微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的特征根.
+
+(1)如果$r_1$是特征方程的单根，则
+\begin{equation*}
+    y=Ce^{r_1x}
+\end{equation*}
+是微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的解；
+
+(2)如果特征方程有一对共轭复根$r_1=\alpha+i\beta,r_2=\alpha-i\beta$，则
+\begin{equation*}
+    y=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)
+\end{equation*}
+是微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的解；
+
+(3)如果$r_1$是特征方程的$k$重根，则
+\begin{equation*}
+    y=(C_1+C_2x+\cdots+C_kx^{k-1})e^{r_1x}
+\end{equation*}
+是微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的解.
+
+\section{常系数非齐次线性微分方程}
+\textbf{1.二阶常系数非齐次线性微分方程的解法}
+
+(4)如果$r_1=\alpha+i\beta,r_2=\alpha-i\beta$都是特征方程的$k$重根，则
+\begin{equation*}
+    y=e^{\alpha x}[(C_1+C_2x+\cdots+C_kx^{k-1})\cos\beta x+(D_1+D_2x+\cdots+D_kx^{k-1})\sin\beta x]
+\end{equation*}
+是微分方程(\ref{nth_order_constant_coefficient_linear_diff_equation})的解.
+
+\section{常系数非齐次线性微分方程}
+设二阶常系数非齐次线性微分方程为
+\begin{equation}
+    y''+py'+qy=f(x) \label{nonhomogeneous_second_order_constant_coefficient_linear_diff_equation}
+\end{equation}
+其中$p,q$为常数.
+
+(1)如果方程(\ref{nonhomogeneous_second_order_constant_coefficient_linear_diff_equation})的右端$f(x)$是$x$的$n$次多项式$P_n(x)$，即$f(x)=P_n(x)$时，而常数0是特征方程的$k$重根时，可设特解为
+\begin{equation*}
+    y*=x^kQ_n(x)
+\end{equation*}
+其中$Q_n(x)$也是$x$的$n$次多项式，但其系数是待定的常数，如果常数0不是特征根，则取$k=0$.
+
+(2)如果方程(\ref{nonhomogeneous_second_order_constant_coefficient_linear_diff_equation})的右端$f(x)=e^{\alpha x}P_n(x)$，可设特解为
+\begin{equation*}
+    y*=x^kQ_n(x)e^{\alpha x}
+\end{equation*}
+其中$Q_n(x)$（待定）是与$P_n(x)$同次的多项式，
+\begin{equation*}
+    k=
+    \begin{cases}
+        0, \quad \alpha\mbox{不是特征方程的根} \\
+        1, \quad \alpha\mbox{是特征方程的单根} \\
+        2, \quad \alpha\mbox{是特征方程的二重根}
+    \end{cases}
+\end{equation*}
+
+(3)如果方程(\ref{nonhomogeneous_second_order_constant_coefficient_linear_diff_equation})的右端$f(x)=e^{\alpha x}[P_l(x)\cos\beta x+P_n(x)\sin\beta x]$，其中$P_l(x),P_n(x)$分别是$x$的$l$次和$n$次多项式，$\alpha,\beta$是已知常数，设特解形式为
+\begin{equation*}
+    y*=x^ke^{\alpha x}[R_m^{(1)}(x)\cos\beta x+R_m^{(2)}(x)\sin\beta x]
+\end{equation*}
+其中$R_m^{(1)}(x),R_m^{(2)}(x)$是两个$m$次多项式，
+\begin{align*}
+    & m=\max\{l,n\} \\
+    & k=
+    \begin{cases}
+        0, \quad \alpha+i\beta\mbox{不是特征方程的根} \\
+        1, \quad \alpha+i\beta\mbox{是特征方程的单复根}
+    \end{cases}
+\end{align*}
